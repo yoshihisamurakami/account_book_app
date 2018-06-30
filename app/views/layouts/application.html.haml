@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %title 家計簿App
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    = render 'layouts/header'
+    .container
+      %h2.title
+        = yield :title
+      = yield
