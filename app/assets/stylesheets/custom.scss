@@ -7,6 +7,15 @@
   box-sizing:         border-box;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  padding-top: 63px;
+  height: 100%;
+}
+
 /* header */
 
 #logo {
@@ -28,20 +37,10 @@
   background-color: #f4f4f4;
   border-color: #ddf;
 }
-
 .navbar-gray .navbar-nav > li > a:hover,
 .navbar-gray .navbar-nav > li > a:focus {
   color: #448;
   background-color: transparent;
-}
-
-html {
-  height: 100%;
-}
-
-body {
-  padding-top: 63px;
-  height: 100%;
 }
 
 .title {
