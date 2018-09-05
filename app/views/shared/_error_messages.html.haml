@@ -3,6 +3,6 @@
     .alert.alert-danger
       = "#{object.errors.count}個のエラーがみつかりました。"
     %ul
-    - object.errors.full_messages.each do |msg|
-      %li
-        = msg
+      - object.errors.full_messages.each do |msg|
+        %li
+          = msg
