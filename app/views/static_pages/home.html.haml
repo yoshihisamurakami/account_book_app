@@ -1,3 +1,4 @@
 = provide(:title, "家計簿の入力")
 
-home
+- if logged_in?
+  = current_user.name + "でログイン中..."
