@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   # GET /users   -> users_path
   def index
+    @users = User.all.order(:id)
   end
   
   # GET /users/1  -> user_path(user)
@@ -26,16 +27,23 @@ class UsersController < ApplicationController
   
   # GET /users/1/edit  -> edit_user_path(user)
   def edit
+    @user = User.find(params[:id])
   end
   
   # PATCH /users/1  -> user_path(user)
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "更新されました。"
+      redirect_to users_path
+    else
+      render 'edit'
+    end
   end
   
   # DELETE users/1  -> user_path(user)
-  def destroy
-  end
-  
+  # def destroy
+  # end
   
   private
   

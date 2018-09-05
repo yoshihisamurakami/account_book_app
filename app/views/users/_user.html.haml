@@ -1,0 +1,8 @@
+%tr
+  %td.column-id
+    = user.id
+  %td
+    = user.name
+  %td.td-operation
+    = link_to "編集", edit_user_path(user)
+    -# link_to "削除", user, method: :delete, data: { confirm: "本当に削除しますか?" } 
