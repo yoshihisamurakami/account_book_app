@@ -25,4 +25,12 @@ module SessionsHelper
       redirect_to login_url
     end
   end
+  
+  def require_admin
+    if !logged_in?
+      redirect_to login_url
+    elsif !@current_user.admin?
+      redirect_to root_url
+    end
+  end
 end

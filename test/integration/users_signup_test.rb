@@ -1,7 +1,12 @@
 require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
+  def setup
+    @admin_user = users(:admin)
+  end
+  
   test "無効な情報でユーザー登録したときの動作" do
+    log_in_as(@admin_user)
     get new_user_path
     assert_no_difference 'User.count' do
       post users_path, params: { user: { name:  "",
@@ -20,6 +25,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
   
   test "正常な情報を送ったときのユーザー登録" do
+    log_in_as(@admin_user)
     get new_user_path
     assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",

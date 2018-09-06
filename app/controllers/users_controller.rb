@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :require_admin, only: [:index, :new, :create]
+  before_action :require_admin_or_correct_user, only: [:edit, :update]
   
   # GET /users   -> users_path
   def index
@@ -51,4 +54,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, 
                                  :password_confirmation)
   end
+  
+  def require_admin_or_correct_user
+    @user = User.find(params[:id])
+    if !logged_in?
+      redirect_to login_url
+    elsif !@current_user.admin? and @current_user != @user
+      redirect_to root_url
+    end
+  end
+
 end

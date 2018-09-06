@@ -1,9 +1,17 @@
+admin:
+  name: admin
+  email: admin@example.com
+  password_digest: <%= User.digest('password') %>
+  admin: true
+  
 murakami:
   name: murakami
   email: murakami@example.com
   password_digest: <%= User.digest('password') %>
+  admin: false
   
-yoshihisa:
-  name: yoshihisa
-  email: yoshihisa@example.com
+tanaka:
+  name: tanaka
+  email: tanaka@example.com
   password_digest: <%= User.digest('password') %>
+  admin: false
