@@ -6,10 +6,10 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     @user = users(:murakami)
   end
   
-  #test "ログインしないで / にアクセスした場合、ログイン画面へリダイレクトされること" do
-  #  get root_path
-  #  assert_redirected_to login_url
-  #end
+  test "ログインしないで / にアクセスした場合、ログイン画面へリダイレクトされること" do
+    get root_path
+    assert_redirected_to login_url
+  end
 
   test "ログイン後、/ にアクセスできること" do
     log_in_as(@user)
