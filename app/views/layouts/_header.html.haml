@@ -5,6 +5,9 @@
       %ul.nav.navbar-nav.navbar-right.navbar-collapse.collapse
         %li
           = link_to "Home", root_path
+        - if logged_in?
+          - if current_user.admin?
+            = render 'layouts/header_admin_menu'
         %li
           = link_to "ヘルプ", help_path
         %li

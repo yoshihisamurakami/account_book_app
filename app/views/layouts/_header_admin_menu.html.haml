@@ -1,0 +1,12 @@
+%li.dropdown
+  %a{ href: "#", class: "dropdown-toggle", 'data-toggle' => "dropdown" }
+    管理者用
+    %b.caret
+  
+  %ul.dropdown-menu
+    %li
+      = link_to "ユーザー一覧", users_path
+    %li
+      = link_to "口座一覧", "#"
+    %li
+      = link_to "カテゴリ一覧", "#"
