@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+yoshihisa_bank:
+  name: 佳久銀行口座
+  comment: 三菱東京UFJ銀行
+
+yoshihisa_wallet:
+  name: 佳久財布
+  comment: 佳久財布
