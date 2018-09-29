@@ -1,0 +1,22 @@
+- provide(:title, "口座管理")
+
+.col-md-8.col-md-offset-2
+  = link_to "新規作成", new_account_path, class: "btn btn-primary"
+
+  %table.table.table-hover.table-admin
+    %thead
+      %tr
+        %th id
+        %th 名前
+        %th コメント
+        %th 操作
+    %tbody
+      - @accounts.each do |account|
+        %tr
+          %td.id= account.id
+          %td= account.name
+          %td= account.comment
+          %td.td-operation
+            = link_to "編集", edit_account_path(account)
+            &nbsp;
+            = link_to "削除", account, method: :delete, data: { confirm: "本当に削除しますか?" } 

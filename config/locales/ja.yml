@@ -2,9 +2,14 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      account: 口座情報
     attributes:
       user:
         name: 名前
         email: Email
         password: パスワード
         password_confirmation: パスワード（確認用）
+      account:
+        name: 口座名
+        comment: コメント
+        
