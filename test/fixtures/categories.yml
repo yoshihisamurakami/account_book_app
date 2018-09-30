@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+daily_goods:
+  name: 日用雑貨
+  is_tax: false
+  is_fixed: false
+  is_food: false
+
+inhabitant_tax: 
+  name: 住民税
+  is_tax: true
+  is_fixed: false
+  is_food: false
+  
+electric_bills:
+  name: 電気代
+  is_tax: false
+  is_fixed: true
+  is_food: false
+
+foods:
+  name: 食材費
+  is_tax: false
+  is_fixed: false
+  is_food: true
