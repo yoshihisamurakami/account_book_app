@@ -1,0 +1,15 @@
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@category) do |f|
+      = render 'shared/error_messages', object: f.object
+      = f.label "カテゴリ名"
+      = f.text_field :name, class: 'form-control'
+      = f.check_box :is_tax,   style: "width: 2em;"
+      税金
+      %br
+      = f.check_box :is_fixed, style: "width: 2em;"
+      固定費
+      %br
+      = f.check_box :is_food,  style: "width: 2em;"
+      食費
+      = f.submit submit_label, class: "btn btn-primary"

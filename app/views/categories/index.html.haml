@@ -1,0 +1,32 @@
+- provide(:title, "カテゴリ管理")
+
+.table-category
+  - if current_user.admin?
+    = link_to "新規作成", new_category_path, class: "btn btn-primary"
+
+  %table.table.table-hover.table-admin
+    %thead
+      %tr
+        %th id
+        %th 名前
+        %th.center.category-tax 税金
+        %th.center.category-fixed 固定費
+        %th.center.category-food 食費
+        %th 操作
+
+    %tbody
+      - @categories.each do |category|
+        %tr
+          %td.id= category.id
+          %td= category.name
+          %td.center= "○" if category.is_tax?
+          %td.center= "○" if category.is_fixed?
+          %td.center= "○" if category.is_food?
+
+          %td.td-operation
+            - if current_user.admin?
+              = link_to "編集", edit_category_path(category)
+              &nbsp;
+              = link_to "削除", category, method: :delete, data: { confirm: "本当に削除しますか?" }
+            - else
+              ¥-
