@@ -12,4 +12,5 @@ ja:
       account:
         name: 口座名
         comment: コメント
-        
+      category:
+        name: カテゴリ名
