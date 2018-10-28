@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+first_deposit:
+  books_date: 2018-10-28
+  user: murakami
+  account: yoshihisa_wallet
+  deposit: true
+  transfer: false
+  category: nil
+  summary: 財布へ入金
+  amount: 20000
+  common: false
+  business: false
+  special: false
+
+buy_daily_goods:
+  books_date: 2018-10-28
+  user: murakami
+  account: yoshihisa_wallet
+  deposit: false
+  transfer: false
+  category: daily_goods
+  summary: ウェットティッシュ
+  amount: 300
+  common: true
+  business: false
+  special: false
