@@ -5,41 +5,38 @@ class Book < ApplicationRecord
 
   validate :valid_balance?
 
-  # 残高
+  # 保存されているレコードの残高
   def balance
-    deposit_total - payment_total - payment
+    deposit_total - payment_total
   end
 
   def deposit_total
-    account_books
-      .where(deposit: true)
-      .sum(:amount)
+    account.deposit_total + deposit_amount
   end
 
+  def deposit_amount
+    return 0 if !deposit
+    persisted? ? updated_amount : amount
+  end
+  
   def payment_total
-    account_books
-      .where(deposit: false)
-      .sum(:amount)
+    account.payment_total + payment_amount
   end
 
-  def payment
-    if !deposit
-      amount
-    else
-      0
-    end
+  def payment_amount
+    return 0 if deposit
+    persisted? ? updated_amount : amount
   end
-
-  def account_books
-    Book.where(account: account_id)
+  
+  # レコードが更新された場合の、更新前後の差額
+  def updated_amount
+    amount - amount_was
   end
-
+  
   # 残高がマイナスになったら false
   def valid_balance?
-    if (!deposit)
-      if (balance < 0)
-        errors.add(:amount, "残高がマイナスになるようです")
-      end
+    if balance < 0
+      errors.add(:amount, "残高がマイナスになるようです")
     end
   end
 end
