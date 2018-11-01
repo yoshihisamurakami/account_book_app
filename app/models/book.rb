@@ -4,39 +4,41 @@ class Book < ApplicationRecord
   belongs_to :category, required: false
 
   validate :valid_balance?
-
-  # 保存されているレコードの残高
+  before_destroy :check_balance_before_destroy
+  
+  def payment
+    !deposit
+  end
+  
+  # 当該オブジェクトの更新後の残高
   def balance
-    deposit_total - payment_total
-  end
-
-  def deposit_total
-    account.deposit_total + deposit_amount
-  end
-
-  def deposit_amount
-    return 0 if !deposit
-    persisted? ? updated_amount : amount
-  end
-  
-  def payment_total
-    account.payment_total + payment_amount
-  end
-
-  def payment_amount
-    return 0 if deposit
-    persisted? ? updated_amount : amount
-  end
-  
-  # レコードが更新された場合の、更新前後の差額
-  def updated_amount
-    amount - amount_was
+    balance = account.balance
+    if persisted? and !amount_was.nil?
+      if deposit?
+        balance -= amount_was
+      else
+        balance += amount_was
+      end
+    end
+    if deposit?
+      balance += amount
+    else
+      balance -= amount
+    end
+    balance
   end
   
   # 残高がマイナスになったら false
   def valid_balance?
     if balance < 0
       errors.add(:amount, "残高がマイナスになるようです")
+      return false
     end
+    true
+  end
+  
+  def check_balance_before_destroy
+    self.amount = 0
+    throw(:abort) if !valid_balance?
   end
 end

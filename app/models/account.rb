@@ -2,6 +2,10 @@ class Account < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :comment, length: { maximum: 50 }
   has_many :books
+
+  def balance
+    deposit_total - payment_total
+  end
   
   def deposit_total
     books
@@ -14,5 +18,5 @@ class Account < ApplicationRecord
       .where(deposit: false)
       .sum(:amount)
   end
-  
+
 end
