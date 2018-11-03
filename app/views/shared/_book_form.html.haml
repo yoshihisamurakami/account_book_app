@@ -1,0 +1,49 @@
+
+= form_for(@book, remote: true, url: root_path) do |f|
+  #error_explanation.hide
+  .col-md-12
+  %table.table.table-bordered.table-condensed
+    %tr
+      %td.books_label.col-md-1 日付:
+      %td.col-md-3= f.date_field :books_date, class: "books_input books_date"
+      %td.col-md-1.books_label ユーザー:
+      %td.col-md-3
+        = f.hidden_field :user_id, value: @book.user.id
+        = @book.user.name
+    %tr
+      %td.col-md-1.books_label 口座:
+      %td.col-md-3
+        = f.select :account_id, |
+          Account.all.map{|o| [o.id.to_s + ':' + o.name, o.id]}.unshift(["（選択）",0]), |
+          {}, |
+          { class: "books_input books_select" } |
+      %td.col-md-1.books_label 入出金:
+      %td.col-md-3
+        = f.radio_button :deposit, true, class: "width_auto"
+        %span.right_space 入金
+        = f.radio_button :deposit, false, class: "width_auto", checked: true
+        %span.right_space 出金
+        = f.check_box :transfer, class: "width_auto"
+        口座間移動
+    %tr
+      %td.col-md-1.books_label カテゴリ:
+      %td.col-md-3
+        = f.select :category_id, |
+          Category.all.map{|o| [o.id.to_s + ':' + o.name, o.id]}.unshift(["（選択）",0]), |
+          {}, |
+          { class: "books_input books_select" } |
+      %td.col-md-1.books_label 摘要:
+      %td.col-md-3
+        = f.text_field :summary, class: "books_input"
+    %tr
+      %td.col-md-1.books_label 金額:
+      %td.col-md-2{:colspan => "3"}
+        = f.number_field :amount, class: "books_input books_number"
+        %span.right_space 円
+        \#{f.check_box :common, class: "width_auto" }
+        %span.right_space 共通
+        \#{f.check_box :business, class: "width_auto" }
+        %span.right_space 事業経費
+        \#{f.check_box :special,  class: "width_auto" }
+        特別経費
+  = f.submit @book.new_record? ? '入力' : '【更新】' , class: "btn btn-primary save_button"

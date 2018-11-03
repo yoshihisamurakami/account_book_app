@@ -84,3 +84,41 @@ input {
 .top-margin {
   margin-top: 1em;
 }
+
+.books_label {
+  background-color: #0088ff;
+  color: white;
+  text-align: center;
+}
+.width_auto {
+  width: auto;
+}
+.right_space {
+  margin-right: 0.5em;
+}
+.books_input {
+  margin-bottom: 0;
+}
+.books_date {
+  width: 12em;
+}
+.books_select {
+  width: 80%;
+  line-height: 1.5em;
+}
+.books_text {
+  margin-bottom: 0em;
+}
+.books_number {
+  width: 8em;
+  text-align: right;
+}
+.save_button {
+  width: 7em;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

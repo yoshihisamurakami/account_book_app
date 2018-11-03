@@ -1,4 +1,10 @@
-= provide(:title, "家計簿の入力")
+- title = @book.new_record? ? '入力' : '編集'
+= provide(:title, "家計簿の#{title}")
 
 - if logged_in?
   = current_user.name + "でログイン中..."
+  
+
+.row
+  .col-sm-8
+    = render 'shared/book_form'
