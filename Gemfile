@@ -39,6 +39,7 @@ gem 'rails-controller-testing'
 gem 'bcrypt',         '~> 3.1.11'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem "loofah", ">= 2.2.3"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
