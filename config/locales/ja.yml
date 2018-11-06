@@ -3,6 +3,7 @@ ja:
     models:
       user: ユーザー
       account: 口座情報
+      book: 家計簿
     attributes:
       user:
         name: 名前
@@ -14,3 +15,15 @@ ja:
         comment: コメント
       category:
         name: カテゴリ名
+      book:
+        books_date: 日付
+        user_id: ユーザーID
+        account_id: 口座ID
+        deposit: 入出金
+        transfer: 口座間移動
+        category_id: カテゴリID
+        summary: 摘要
+        amount: 金額
+        common: 共通
+        business: 事業経費
+        special: 特別経費

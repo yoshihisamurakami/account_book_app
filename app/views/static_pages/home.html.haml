@@ -2,9 +2,16 @@
 = provide(:title, "家計簿の#{title}")
 
 - if logged_in?
-  = current_user.name + "でログイン中..."
-  
+  -# = current_user.name + "でログイン中..."
 
 .row
   .col-sm-8
     = render 'shared/book_form'
+  .col-sm-4
+    = render 'shared/balance_by_account'
+
+.row
+  .col-sm-12.top-margin
+    - if Book.updated_within_24_hours.count > 0
+      %h2.margin_bottom 家計簿の一覧（24時間以内の入力）
+      = render 'shared/books', books: Book.updated_within_24_hours

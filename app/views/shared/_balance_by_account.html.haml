@@ -1,0 +1,7 @@
+%table.table.table-hover.books_list.balance_by_account
+  - Account.all.each do |account|
+    %tr
+      %td
+        = account.name
+      %td
+        = account.balance.to_s(:delimited)
