@@ -3,7 +3,11 @@ class Book < ApplicationRecord
   belongs_to :account
   belongs_to :category, required: false
 
-  validate :valid_balance?
+  validates :books_date, presence: true
+  validates :summary,    presence: true
+  validates :amount,     numericality: { only_integer: true }
+  validate  :valid_balance?
+  validate  :category_valid?
   before_destroy :check_balance_before_destroy
 
   def payment
@@ -12,6 +16,7 @@ class Book < ApplicationRecord
 
   # 当該オブジェクトの更新後の残高
   def balance
+    return 0 if account.nil?
     balance = account.balance
     if persisted? and !amount_was.nil?
       if deposit?
@@ -20,10 +25,12 @@ class Book < ApplicationRecord
         balance += amount_was
       end
     end
-    if deposit?
-      balance += amount
-    else
-      balance -= amount
+    if !amount.nil?
+      if deposit?
+        balance += amount
+      else
+        balance -= amount
+      end
     end
     balance
   end
@@ -35,6 +42,14 @@ class Book < ApplicationRecord
       return false
     end
     true
+  end
+
+  def category_valid?
+    if payment and !transfer
+      if category.nil?
+        errors.add(:category, "出金の場合は必ずカテゴリを選んで下さい。")
+      end
+    end
   end
 
   def check_balance_before_destroy
