@@ -19,7 +19,7 @@ class CategoriesTest < ActionDispatch::IntegrationTest
     assert_redirected_to root_url
   end
 
-  test "ユーザー一覧ページが正常であること" do
+  test "カテゴリ一覧ページが正常であること" do
     log_in_as(@admin_user)
     get categories_path
     assert_template 'categories/index'

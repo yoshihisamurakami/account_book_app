@@ -120,4 +120,8 @@ class BookTest < ActiveSupport::TestCase
     assert_not @book_depo.valid?
   end
 
+  test "category_idが0" do
+    @book_depo.category_id = 0
+    assert @book_depo.valid?
+  end
 end

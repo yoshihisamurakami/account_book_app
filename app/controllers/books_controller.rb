@@ -24,7 +24,8 @@ class BooksController < ApplicationController
       :books_date, :user_id,
       :account_id, :deposit, :transfer,
       :category_id, :summary,
-      :amount
+      :amount,
+      :common, :business, :special,
     )
   end
 

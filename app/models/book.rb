@@ -1,7 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :user
   belongs_to :account
-  belongs_to :category, required: false
+  belongs_to :category, optional: true
 
   validates :books_date, presence: true
   validates :summary,    presence: true
