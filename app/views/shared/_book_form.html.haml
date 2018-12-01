@@ -50,4 +50,3 @@
   = f.submit @book.new_record? ? '入力' : '【更新】' , class: "btn btn-primary save_button"
 
 = debug(params) if Rails.env.development?
-= debug(@book.inspect) if Rails.env.development?

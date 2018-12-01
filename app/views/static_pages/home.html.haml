@@ -12,6 +12,6 @@
 
 .row
   .col-sm-12.top-margin
-    - if Book.updated_within_24_hours.count > 0
-      %h2.margin_bottom 家計簿の一覧（24時間以内の入力）
-      = render 'shared/books', books: Book.updated_within_24_hours
+    - if books_updated_today.count > 0
+      %h2.title.margin_bottom 家計簿の一覧（24時間以内の入力）
+      = render 'shared/books', books: books_updated_today

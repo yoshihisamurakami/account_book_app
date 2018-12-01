@@ -57,7 +57,4 @@ class Book < ApplicationRecord
     throw(:abort) if !valid_balance?
   end
 
-  def self.updated_within_24_hours
-    Book.all
-  end
 end

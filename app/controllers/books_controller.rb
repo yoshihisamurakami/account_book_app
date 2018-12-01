@@ -15,11 +15,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    # params.require(:book).permit(
-    #   :books_date, :user_id,
-    #   :account_id, :deposit, :transfer,
-    #   :category_id, :summary,
-    #   :amount, :common, :business, :special)
     params.require(:book).permit(
       :books_date, :user_id,
       :account_id, :deposit, :transfer,
