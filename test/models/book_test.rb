@@ -120,8 +120,15 @@ class BookTest < ActiveSupport::TestCase
     assert_not @book_depo.valid?
   end
 
-  test "category_idが0" do
-    @book_depo.category_id = 0
-    assert @book_depo.valid?
+  test "入金のときにカテゴリが選ばれていたらエラー" do
+    @book_depo.category = categories(:inhabitant_tax)
+    assert_not @book_depo.valid?
   end
+
+  # カテゴリのselectboxの初期値 0 で  insertしようとしたとき例外が発生したが、
+  # テストで再現できない。別途要確認。
+  # test "category_idが0" do
+  #   @book_depo.category_id = '0'
+  #   assert @book_depo.save
+  # end
 end

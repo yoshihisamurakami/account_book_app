@@ -29,5 +29,5 @@
           %td.center= book.common? ? 'o' : '-'
           %td.center= book.business? ? 'o' : '-'
           %td.center= book.special? ? 'o' : '-'
-          %td= "修正"
-          %td= "削除"
+          %td= link_to "変更", edit_book_path(book)
+          %td= link_to "削除", book, method: :delete, data: { confirm: "本当に削除しますか?" }

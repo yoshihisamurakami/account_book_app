@@ -7,8 +7,15 @@ class Book < ApplicationRecord
   validates :summary,    presence: true
   validates :amount,     numericality: { only_integer: true }
   validate  :valid_balance?
-  validate  :category_valid?
+  validate  :category_valid_on_payment
+  validate  :cateogry_valid_on_deposit
   before_destroy :check_balance_before_destroy
+  after_initialize :set_default, if: :new_record?
+
+  def set_default
+    self.books_date = Time.zone.now
+    self.deposit ||= false
+  end
 
   def payment
     !deposit
@@ -44,10 +51,18 @@ class Book < ApplicationRecord
     true
   end
 
-  def category_valid?
+  def category_valid_on_payment
     if payment and !transfer
       if category.nil?
         errors.add(:category, "出金の場合は必ずカテゴリを選んで下さい。")
+      end
+    end
+  end
+
+  def cateogry_valid_on_deposit
+    if deposit
+      unless category.nil?
+        errors.add(:category, "入金の場合はカテゴリを選ばないで下さい。")
       end
     end
   end

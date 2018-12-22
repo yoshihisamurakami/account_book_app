@@ -3,7 +3,6 @@ class StaticPagesController < ApplicationController
 
   def home
     @book = current_user.books.build
-    @book.books_date = Time.zone.now
   end
 
   def help

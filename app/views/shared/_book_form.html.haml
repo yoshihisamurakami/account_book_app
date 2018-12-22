@@ -1,6 +1,5 @@
 
-= form_for(@book, url: root_path) do |f|
-  -# #error_explanation.hide
+= form_for(@book) do |f|
   = render 'shared/error_messages', object: f.object
   .col-md-12
   %table.table.table-bordered.table-condensed
@@ -20,9 +19,9 @@
           { class: "books_input books_select" } |
       %td.col-md-1.books_label 入出金:
       %td.col-md-3
-        = f.radio_button :deposit, true, class: "width_auto"
+        = f.radio_button :deposit, true, class: "width_auto", id: 'checkbox_deposit'
         %span.right_space 入金
-        = f.radio_button :deposit, false, class: "width_auto", checked: true
+        = f.radio_button :deposit, false, class: "width_auto", id: 'checkbox_payment'
         %span.right_space 出金
         = f.check_box :transfer, class: "width_auto"
         口座間移動
@@ -49,4 +48,4 @@
         特別経費
   = f.submit @book.new_record? ? '入力' : '【更新】' , class: "btn btn-primary save_button"
 
-= debug(params) if Rails.env.development?
+-# debug(@book.deposit) if Rails.env.development?

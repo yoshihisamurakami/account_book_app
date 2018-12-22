@@ -6,10 +6,33 @@ class BooksController < ApplicationController
       flash[:success] = "保存されました。"
       redirect_to root_url
     else
-      #render partial: "js_error", object: @book
       render 'static_pages/home'
     end
-    # render 'static_pages/home'
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+    render 'static_pages/home'
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update_attributes(book_params)
+      flash[:success] = "更新されました。"
+      redirect_to root_url
+    else
+      render 'static_pages/home'
+    end
+  end
+
+  def destroy
+    @book = Book.find(params[:id])
+    if @book.destroy
+      flash[:success] = "削除されました。"
+      redirect_to root_url
+    else
+      render 'static_pages/home'
+    end
   end
 
   private

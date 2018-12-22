@@ -14,29 +14,10 @@ class BooksTest < ActionDispatch::IntegrationTest
     assert_redirected_to login_url
   end
 
-  test "カテゴリがある場合入金してOK" do
-    log_in_as(@user)
-    assert_difference 'Book.count', 1 do
-    post root_path, params: { book: {
-      books_date:  "2018-11-25",
-      user_id: @user.id,
-      account_id: @account.id,
-      deposit: true,
-      transfer: false,
-      category_id: @category.id,
-      summary: '入金',
-      amount: 10000,
-      common: false,
-      business: false,
-      special: false,
-    } }
-    end
-  end
-
   test "カテゴリがなしでも入金してOK" do
     log_in_as(@user)
     assert_difference 'Book.count', 1 do
-    post root_path, params: { book: {
+    post books_path, params: { book: {
       books_date:  "2018-11-25",
       user_id: @user.id,
       account_id: @account.id,

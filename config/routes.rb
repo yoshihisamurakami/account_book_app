@@ -9,6 +9,5 @@ Rails.application.routes.draw do
 
   resources :accounts, only: [:new, :create, :index, :edit, :update]
   resources :categories
-  #resources :books,    only: [:create]
-  post '/',  to: 'books#create'
+  resources :books,    only: [:create, :edit, :update, :destroy]
 end
