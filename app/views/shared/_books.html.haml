@@ -31,3 +31,5 @@
           %td.center= book.special? ? 'o' : '-'
           %td= link_to "変更", edit_book_path(book)
           %td= link_to "削除", book, method: :delete, data: { confirm: "本当に削除しますか?" }
+
+= will_paginate books, previous_label: '<', next_label: '>'

@@ -49,6 +49,6 @@ class BooksController < ApplicationController
   end
 
   def set_book_view
-    @book_view = BookViewModel.new(current_user)
+    @book_view = BookViewModel.new(current_user, params)
   end
 end

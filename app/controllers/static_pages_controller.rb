@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @book = current_user.books.build
-    @book_view = BookViewModel.new(current_user)
+    @book_view = BookViewModel.new(current_user, params)
   end
 
   def help
