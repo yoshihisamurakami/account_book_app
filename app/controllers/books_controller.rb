@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :set_book_view, only: [:edit, :update, :destroy]
 
   def create
     @book = Book.new(book_params)
@@ -47,4 +48,7 @@ class BooksController < ApplicationController
     )
   end
 
+  def set_book_view
+    @book_view = BookViewModel.new(current_user)
+  end
 end
