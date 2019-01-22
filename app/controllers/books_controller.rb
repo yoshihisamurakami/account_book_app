@@ -1,5 +1,12 @@
 class BooksController < ApplicationController
   before_action :set_book_view, only: [:edit, :update, :destroy]
+  before_action :require_login, only: [:index]
+
+  def index
+    year = 2019
+    month = 1  # 暫定確認用
+    @books = Book.get_on_target_month(year, month, params[:page])
+  end
 
   def create
     @book = Book.new(book_params)
@@ -50,5 +57,11 @@ class BooksController < ApplicationController
 
   def set_book_view
     @book_view = BookViewModel.new(current_user, params)
+  end
+
+  def require_login
+    if !logged_in?
+      redirect_to login_url
+    end
   end
 end

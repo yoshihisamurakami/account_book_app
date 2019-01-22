@@ -9,5 +9,5 @@ Rails.application.routes.draw do
 
   resources :accounts, only: [:new, :create, :index, :edit, :update]
   resources :categories
-  resources :books,    only: [:create, :edit, :update, :destroy]
+  resources :books,    only: [:create, :index, :edit, :update, :destroy]
 end

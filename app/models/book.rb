@@ -72,4 +72,13 @@ class Book < ApplicationRecord
     throw(:abort) if !valid_balance?
   end
 
+  def self.get_on_target_month(year, month, page)
+    start = Date.new(year, month, 1)
+    last  = Date.new(year, month, -1)
+    self
+      .where("books_date >= ?", start)
+      .where("books_date <= ?", last)
+      .order(:books_date, :created_at)
+      .paginate(page: page)
+  end
 end

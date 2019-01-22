@@ -1,0 +1,9 @@
+- provide(:title, '家計簿の一覧')
+
+.row
+  .col-sm-8
+    %p memo : 今月入力されたもの全件
+  .col-sm-4
+    (年月選択)
+
+= render 'shared/books', books: @books
