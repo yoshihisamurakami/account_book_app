@@ -3,9 +3,8 @@ class BooksController < ApplicationController
   before_action :require_login, only: [:index]
 
   def index
-    year = 2019
-    month = 1  # 暫定確認用
-    @books = Book.get_on_target_month(year, month, params[:page])
+    @target_term = TargetTermModel.new(session)
+    @books = Book.get_on_target_month(@target_term.year, @target_term.month, params[:page])
   end
 
   def create

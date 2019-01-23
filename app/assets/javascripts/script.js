@@ -8,4 +8,34 @@ $(document).on('turbolinks:load', function() {
     $('#book_category_id').prop('disabled', false);
     $('#book_category_id').css('background-color', '#fff');
   })
+  $('.link_prev_month').on('click', function() {
+    $.ajax({
+      type: 'GET',
+      url: 'target_terms/prev'
+    }).done(function(json) {
+      if (typeof json.status !== 'undefined') {
+        if (json.status == 'ok') {
+          location.reload();
+        }
+      }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert('error');
+    })
+    return false;
+  })
+  $('.link_next_month').on('click', function() {
+    $.ajax({
+      type: 'GET',
+      url: 'target_terms/next'
+    }).done(function(json) {
+      if (typeof json.status !== 'undefined') {
+        if (json.status == 'ok') {
+          location.reload();
+        }
+      }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert('error');
+    })
+    return false;
+  })
 });
