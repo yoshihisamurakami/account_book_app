@@ -1,0 +1,8 @@
+%table.table.table-hover.books_list.user_books_table
+  - books.each do |category, amount|
+    %tr
+      %td= category.name
+      %td.right= amount.to_s(:delimited)
+  %tr
+    %td= "合計"
+    %td.right= books.values.inject(:+).to_s(:delimited)

@@ -1,0 +1,18 @@
+- provide(:title, "#{@user.name}の家計簿一覧")
+
+.row
+  .col-sm-8
+  .col-sm-4
+    = render 'shared/navi_month'
+.row
+  .col-sm-4
+    - unless @user_books_view.private_books.empty?
+      %h2.title.margin_bottom= "個人"
+      = render "user_books_summary", { books: @user_books_view.private_books }
+  .col-sm-4
+    - unless @user_books_view.common_books.empty?
+      %h2.title.margin_bottom= "共通"
+      = render "user_books_summary", { books: @user_books_view.common_books }
+
+%br
+= render 'shared/books', books: @books

@@ -81,4 +81,28 @@ class Book < ApplicationRecord
       .order(:books_date, :created_at)
       .paginate(page: page)
   end
+
+  def self.get_all_on_target_month(year, month)
+    start = Date.new(year, month, 1)
+    last  = Date.new(year, month, -1)
+    self
+      .where("books_date >= ?", start)
+      .where("books_date <= ?", last)
+  end
+
+  def self.payments
+    self.where(deposit: false)
+  end
+
+  def self.without_transfer
+    self.where(transfer: false)
+  end
+
+  def self.privates
+    self.where(common: false)
+  end
+
+  def self.commons
+    self.where(common: true)
+  end
 end

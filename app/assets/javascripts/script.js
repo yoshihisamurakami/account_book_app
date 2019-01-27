@@ -11,7 +11,7 @@ $(document).on('turbolinks:load', function() {
   $('.link_prev_month').on('click', function() {
     $.ajax({
       type: 'GET',
-      url: 'target_terms/prev'
+      url: '/target_terms/prev'
     }).done(function(json) {
       if (typeof json.status !== 'undefined') {
         if (json.status == 'ok') {
@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function() {
   $('.link_next_month').on('click', function() {
     $.ajax({
       type: 'GET',
-      url: 'target_terms/next'
+      url: '/target_terms/next'
     }).done(function(json) {
       if (typeof json.status !== 'undefined') {
         if (json.status == 'ok') {
