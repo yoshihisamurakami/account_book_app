@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :require_admin, only: [:index, :new, :create]
   before_action :require_admin_or_correct_user, only: [:edit, :update]
+  before_action :require_logged_in, only: [:show]
 
   # GET /users   -> users_path
   def index

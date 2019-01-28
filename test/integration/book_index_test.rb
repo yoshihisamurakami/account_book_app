@@ -17,6 +17,5 @@ class BooksIndexTest < ActionDispatch::IntegrationTest
     get books_path
     assert_response :success
     assert_template 'books/index'
-
   end
 end
