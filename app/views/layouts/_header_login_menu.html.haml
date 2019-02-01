@@ -1,0 +1,14 @@
+%li.dropdown
+  %a{href: "#", class: "dropdown-toggle", 'data-toggle': "dropdown" }
+    家計簿
+    %b.caret
+
+  %ul.dropdown-menu
+    %li= link_to "一覧", books_path
+
+    %li.dropdown-submenu
+      %a{ href: "#" , class: "dropdown-toggle", 'data-toggle': "dropdown"}
+        ユーザー別
+      %ul.dropdown-menu
+        - User.all.each do |user|
+          %li= link_to user.name, "/users/#{user.id}"
