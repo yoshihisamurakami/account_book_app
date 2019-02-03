@@ -19,6 +19,13 @@ class AccountsController < ApplicationController
     @accounts = Account.all
   end
 
+  def books
+    @target_term = TargetTermModel.new(session)
+    account = Account.find(params[:id])
+    @books = account.books
+      .get_all_on_target_month(@target_term.year, @target_term.month)
+  end
+
   def edit
     @account = Account.find(params[:id])
   end

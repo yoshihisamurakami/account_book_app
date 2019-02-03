@@ -1,0 +1,9 @@
+- provide(:title, '口座別一覧')
+
+.row
+  .col-sm-8
+    %p memo :
+  .col-sm-4
+    = render 'shared/navi_month'
+
+= render 'shared/books_with_balance', books: @books
