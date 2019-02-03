@@ -94,6 +94,10 @@ class Book < ApplicationRecord
     self.where(deposit: false)
   end
 
+  def self.deposits
+    self.where(deposit: true)
+  end
+
   def self.without_transfer
     self.where(transfer: false)
   end
