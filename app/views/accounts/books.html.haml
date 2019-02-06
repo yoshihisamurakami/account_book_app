@@ -1,4 +1,4 @@
-- provide(:title, '口座別一覧')
+- provide(:title, "#{@account_name}一覧")
 
 .row
   .col-sm-8
@@ -7,5 +7,3 @@
     = render 'shared/navi_month'
 
 = render 'shared/books_with_balance', books: @books
-
-= debug @debug

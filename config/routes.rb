@@ -8,13 +8,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :accounts do
-    member do
-      get 'books'
-    end
+    get 'books', on: :member
   end
 
   resources :categories
   resources :books,    only: [:create, :index, :edit, :update, :destroy]
-  get '/target_terms/prev', to: 'target_terms#prev'
-  get '/target_terms/next', to: 'target_terms#next'
+  get '/target_terms/prev', to: 'target_terms#prev', as: :prev_month
+  get '/target_terms/next', to: 'target_terms#next', as: :next_month
 end

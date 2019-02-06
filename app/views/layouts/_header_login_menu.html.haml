@@ -11,4 +11,10 @@
         ユーザー別
       %ul.dropdown-menu
         - User.all.each do |user|
-          %li= link_to user.name, "/users/#{user.id}"
+          %li= link_to user.name, user_path(user)
+    %li.dropdown-submenu
+      %a{ href: "#" , class: "dropdown-toggle", 'data-toggle': "dropdown"}
+        口座別
+      %ul.dropdown-menu
+        - Account.all.each do |account|
+          %li= link_to account.name, books_account_path(account)

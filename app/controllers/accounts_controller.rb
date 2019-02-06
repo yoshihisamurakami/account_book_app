@@ -1,5 +1,8 @@
 class AccountsController < ApplicationController
   before_action :require_admin, only: [:new, :create, :index, :edit, :update]
+  before_action :require_logged_in, only: [:books]
+
+  include AccountsHelper
 
   def new
     @account = Account.new
@@ -22,13 +25,13 @@ class AccountsController < ApplicationController
   def books
     @target_term = TargetTermModel.new(session)
     account = Account.find(params[:id])
+    @account_name = account.name
     @books = account.books
       .get_all_on_target_month(@target_term.year, @target_term.month)
-    @debug = 0
+    @carryover = 0
     unless @books.empty?
-      @debug = account.balance_before_target_date(@books.first.books_date)
+      @carryover = account.balance_before_target_date(@books.first.books_date)
     end
-    
   end
 
   def edit
