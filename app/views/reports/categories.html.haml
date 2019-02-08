@@ -1,0 +1,18 @@
+- provide(:title, 'カテゴリ別まとめ')
+
+=# debug(@debug)
+
+%table.books_list
+  %tr
+    %td= "#"
+    - @report_target_terms.each do |term|
+      %td= "%d-%02d" % [term[:year], term[:month]]
+  - @categories.each do |category|
+    %tr
+      %td= category.name
+      - @report_target_terms.each do |term|
+        %td.right= get_report(report: @report, category_id: category.id, term: term).to_s(:delimited)
+  %tr
+    %td= "合計"
+    - @report_target_terms.each do |term|
+      %td.right= get_report_total(report: @report, term: term).to_s(:delimited)
