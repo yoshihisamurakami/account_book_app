@@ -204,3 +204,33 @@ input[type="number"]::-webkit-inner-spin-button {
   -moz-border-radius: 6px 0 6px 6px;
   border-radius: 6px 0 6px 6px;
 }
+.width-auto {
+  width: auto;
+}
+.prevmonth-link, .nextmonth-link {
+  border: 1px solid #888;
+  color: #888;
+  padding: 7px;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0 3px;
+  &:link {
+    text-decoration: none;
+    color: #888;
+  }
+  &:hover {
+    text-decoration: none;
+    color: #888;
+  }
+  &:active {
+    text-decoration: none;
+    color: #888;
+  }
+  &:visited {
+    text-decoration: none;
+    color: #888;
+  }
+}
+.navi-month {
+  margin-bottom: 2em;
+}
