@@ -18,3 +18,4 @@
       %ul.dropdown-menu
         - Account.all.each do |account|
           %li= link_to account.name, books_account_path(account)
+    %li= link_to "カテゴリ別まとめ", report_categories_path
