@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+january:
+  target_year: 2019
+  target_month: 1
+  regular_income: 500000
+  extra_income: 0
+  special_income: 0
+  tax_funding: 100000
+  special_funding: 50000
+  savings: 20000
+  fixed_budget: 100000
+
+february:
+  target_year: 2019
+  target_month: 2
+  regular_income: 500000
+  extra_income: 10000
+  special_income: 0
+  tax_funding: 100000
+  special_funding: 50000
+  savings: 20000
+  fixed_budget: 100000
