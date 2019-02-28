@@ -55,12 +55,15 @@ body {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
   background-color: #fff;
   @include box_sizing;
 }
-
+.margin_bottom {
+  margin-bottom: 15px;
+}
+.btn_admin {
+  width: 100%;
+}
 input {
   height: auto !important;
 }

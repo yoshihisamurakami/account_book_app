@@ -11,7 +11,7 @@
   %tbody
   - @budgets.each do |budget|
     %tr
-      %td= "#budget.yyyymm"
+      %td= "#{budget.target_year}-" + "%02d" % budget.target_month
       %td
         = link_to "編集", edit_budget_path(budget)
       %td

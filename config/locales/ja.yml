@@ -4,6 +4,7 @@ ja:
       user: ユーザー
       account: 口座情報
       book: 家計簿
+      budget: 予算
     attributes:
       user:
         name: 名前
@@ -27,3 +28,16 @@ ja:
         common: 共通
         business: 事業経費
         special: 特別経費
+      budget:
+        id: ID
+        target_year: 対象年
+        target_month: 対象月
+        regular_income: 定期収入
+        extra_income: 臨時収入
+        special_income: 特別収入
+        tax_funding: 税金の積立
+        special_funding: 特別経費の積立
+        savings: 貯金
+        fixed_budget: 固定費の予算
+        created_at: 登録日時
+        updated_at: 更新日時

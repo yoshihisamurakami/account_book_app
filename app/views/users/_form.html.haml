@@ -1,16 +1,16 @@
 = form_for(@user) do |f|
   = render 'shared/error_messages', object: f.object
-      
+
   = f.label "名前"
-  = f.text_field :name, class: 'form-control'
-      
+  = f.text_field :name, class: 'form-control margin_bottom'
+
   = f.label :email
-  = f.email_field :email,  class: 'form-control'
-      
+  = f.email_field :email,  class: 'form-control margin_bottom'
+
   = f.label "パスワード"
-  = f.password_field :password, class: 'form-control'
-      
+  = f.password_field :password, class: 'form-control margin_bottom'
+
   = f.label "パスワード（確認用）"
-  = f.password_field :password_confirmation, class: 'form-control'
-      
-  = f.submit yield(:button_text), class: "btn btn-primary"
+  = f.password_field :password_confirmation, class: 'form-control margin_bottom'
+
+  = f.submit yield(:button_text), class: "btn btn-primary btn_admin"

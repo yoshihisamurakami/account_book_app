@@ -3,7 +3,7 @@
     = form_for(@category) do |f|
       = render 'shared/error_messages', object: f.object
       = f.label "カテゴリ名"
-      = f.text_field :name, class: 'form-control'
+      = f.text_field :name, class: 'form-control margin_bottom'
       = f.check_box :is_tax,   style: "width: 2em;"
       税金
       %br
@@ -12,4 +12,4 @@
       %br
       = f.check_box :is_food,  style: "width: 2em;"
       食費
-      = f.submit submit_label, class: "btn btn-primary"
+      = f.submit submit_label, class: "btn btn-primary btn_admin"

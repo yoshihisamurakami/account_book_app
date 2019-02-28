@@ -4,9 +4,9 @@
   .col-md-6.col-md-offset-3
     = form_for(:session, url: login_path) do |f|
       = f.label "メールアドレス"
-      = f.email_field :email, class: 'form-control'
+      = f.email_field :email, class: 'form-control margin_bottom'
 
       = f.label "パスワード"
-      = f.password_field :password, class: 'form-control'
+      = f.password_field :password, class: 'form-control margin_bottom'
 
       = f.submit "ログイン", class: "btn btn-primary"

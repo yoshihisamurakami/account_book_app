@@ -1,0 +1,54 @@
+
+= form_for(@budget) do |f|
+  = render 'shared/error_messages', object: f.object
+
+  %table.table.table-bordered.table-condensed{:style => "width: 300px;"}
+    %tr
+      %td.books_label= "対象年月"
+      %td
+        = f.text_field :target_year,  value: @budget.target_year, style: "width: 4em;"
+        年
+        = f.text_field :target_month, value: @budget.target_month, style: "width: 2em;"
+        月
+    %tr
+      %td.books_label= "定期収入"
+      %td
+        = f.number_field :regular_income, class: "books_text books_number"
+        円
+    %tr
+      %td.books_label= "臨時収入"
+      %td
+        = f.number_field :extra_income, class: "books_text books_number"
+        円
+    %tr
+      %td.books_label= "特別収入"
+      %td
+        = f.number_field :special_income, class: "books_text books_number"
+        円
+    %tr
+      %td{colspan: "2"}
+
+    %tr
+      %td.books_label= "税金の積立"
+      %td
+        = f.number_field :tax_funding, class: "books_text books_number"
+        円
+    %tr
+      %td.books_label= "特別経費の積立"
+      %td
+        = f.number_field :special_funding, class: "books_text books_number"
+        円
+    %tr
+      %td.books_label= "貯金"
+      %td
+        = f.number_field :savings, class: "books_text books_number"
+        円
+    %tr
+      %td{colspan: "2"}
+
+    %tr
+      %td.books_label= "固定費の予算"
+      %td
+        = f.number_field :fixed_budget, class: "books_text books_number"
+        円
+  = f.submit @budget.new_record? ? '入力' : '【更新】' , class: "btn btn-primary"
