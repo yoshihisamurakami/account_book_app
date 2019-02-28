@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :books,    only: [:create, :index, :edit, :update, :destroy]
+  resources :budgets,  only: [:new, :create, :index, :edit, :update, :destroy]
+
   get '/target_terms/prev', to: 'target_terms#prev', as: :prev_month
   get '/target_terms/next', to: 'target_terms#next', as: :next_month
   get '/reports/categories', to: 'reports#categories', as: :report_categories
+
 end

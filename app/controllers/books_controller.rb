@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book_view, only: [:edit, :update, :destroy]
-  before_action :require_login, only: [:index]
+  before_action :require_logged_in, only: [:index]
 
   def index
     @target_term = TargetTermModel.new(session)
@@ -58,9 +58,4 @@ class BooksController < ApplicationController
     @book_view = BookViewModel.new(current_user, params)
   end
 
-  def require_login
-    if !logged_in?
-      redirect_to login_url
-    end
-  end
 end

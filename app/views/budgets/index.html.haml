@@ -1,0 +1,18 @@
+- provide(:title, "予算一覧")
+
+= link_to "新規作成", new_budget_path, class: "btn btn-primary"
+
+%table.table.table-hover.books-list.budgets_table
+  %thead
+    %tr
+      %th= "対象月"
+      %th= "修正"
+      %th= "削除"
+  %tbody
+  - @budgets.each do |budget|
+    %tr
+      %td= "#budget.yyyymm"
+      %td
+        = link_to "編集", edit_budget_path(budget)
+      %td
+        = link_to "削除", budget, method: :delete, data: { confirm: "本当に削除しますか?" }
