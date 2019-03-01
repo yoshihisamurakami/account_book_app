@@ -20,6 +20,26 @@ class BudgetsController < ApplicationController
       .order(:target_year, :target_month)
   end
 
+  def edit
+    @budget = Budget.find(params[:id])
+  end
+
+  def update
+    @budget = Budget.find(params[:id])
+    if @budget.update_attributes(budget_params)
+      flash[:success] = "予算が更新されました。"
+      redirect_to budgets_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Budget.find(params[:id]).destroy
+    flash[:success] = "削除されました。"
+    redirect_to budgets_path
+  end
+
   private
 
   def budget_params
