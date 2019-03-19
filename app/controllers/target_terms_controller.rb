@@ -8,18 +8,20 @@ class TargetTermsController < ApplicationController
   end
 
   def prev
-    date = Date.new(session[:target_term_year], session[:target_term_month], 1)
-    prev_month_day = date.prev_month(1)
-    session[:target_term_year]  = prev_month_day.year
-    session[:target_term_month] = prev_month_day.month
-    render json: { status: 'ok' }
+    update_target_term 'prev'
   end
 
   def next
+    update_target_term 'next'
+  end
+
+  private
+
+  def update_target_term(target)
     date = Date.new(session[:target_term_year], session[:target_term_month], 1)
-    next_month_day = date.next_month(1)
-    session[:target_term_year]  = next_month_day.year
-    session[:target_term_month] = next_month_day.month
+    target_month_day = date.send(target + '_month')
+    session[:target_term_year]  = target_month_day.year
+    session[:target_term_month] = target_month_day.month
     render json: { status: 'ok' }
   end
 
