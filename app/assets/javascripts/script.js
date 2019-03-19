@@ -15,25 +15,16 @@ $(document).on('turbolinks:load', function() {
       }
     }
   }
-  $('#prev_month').on('click', function() {
+  $('#prev_month, #next_month').on('click', function() {
+    var id =  $(this).attr("id");
+    var target = id.replace(/_month/, '');
     $.ajax({
       type: 'GET',
-      url: '/target_terms/prev'
+      url: '/target_terms/' + target
     }).done(function(json) {
-      reloadOnPagination(json);
+     reloadOnPagination(json);
     }).fail(function(jqXHR, textStatus, errorThrown) {
-      alert('error');
-    })
-    return false;
-  })
-  $('#next_month').on('click', function() {
-    $.ajax({
-      type: 'GET',
-      url: '/target_terms/next'
-    }).done(function(json) {
-      reloadOnPagination(json);
-    }).fail(function(jqXHR, textStatus, errorThrown) {
-      alert('error');
+     alert('error');
     })
     return false;
   })
