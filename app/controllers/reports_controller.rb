@@ -6,11 +6,7 @@ class ReportsController < ApplicationController
     @categories = Category.all.order(:id)
     target_terms = get_target_terms
     @report_target_terms = target_terms.select do |term|
-      Book
-        .get_all_on_target_month(term[:year], term[:month])
-        .payments
-        .without_transfer
-        .sum(:amount) > 0
+      Book.pure_payments_total(term[:year], term[:month]) > 0
     end
     @report = []
     @report_target_terms.each do |term|
@@ -29,7 +25,6 @@ class ReportsController < ApplicationController
         total: monthly_summary.values.inject(:+)
       }
     end
-    @debug = @report
   end
 
   private

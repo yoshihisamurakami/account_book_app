@@ -109,4 +109,13 @@ class Book < ApplicationRecord
   def self.commons
     self.where(common: true)
   end
+
+  def self.pure_payments_total(year, month)
+    self
+      .get_all_on_target_month(year, month)
+      .payments
+      .without_transfer
+      .sum(:amount)
+  end
+
 end
