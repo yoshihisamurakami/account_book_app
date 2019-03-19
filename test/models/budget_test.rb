@@ -185,4 +185,16 @@ class BudgetTest < ActiveSupport::TestCase
     assert_not @budget.valid?
   end
 
+  test "income_total の確認" do
+    assert_equal @budget.income_total, 500000
+  end
+
+  test "payments_total の確認" do
+    assert_equal @budget.payments_total, 170000
+  end
+
+  test "cost_of_living (生活費) の確認" do
+    assert_equal @budget.cost_of_living, 500000 - 170000
+  end
+
 end

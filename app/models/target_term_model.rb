@@ -6,6 +6,10 @@ class TargetTermModel
     self.month = session[:target_term_month] || default_month
   end
 
+  def lastday_of_month
+    Date.new(year, month, -1).day
+  end
+
   private
 
   def default_year

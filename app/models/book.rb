@@ -118,4 +118,7 @@ class Book < ApplicationRecord
       .sum(:amount)
   end
 
+  def self.cost_of_living
+    5000
+  end
 end
