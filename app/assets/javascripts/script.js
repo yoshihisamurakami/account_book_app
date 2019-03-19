@@ -8,16 +8,19 @@ $(document).on('turbolinks:load', function() {
     $('#book_category_id').prop('disabled', false);
     $('#book_category_id').css('background-color', '#fff');
   })
+  var reloadOnPagination = function(json) {
+    if (typeof json.status !== 'undefined') {
+      if (json.status == 'ok') {
+        location.reload();
+      }
+    }
+  }
   $('#prev_month').on('click', function() {
     $.ajax({
       type: 'GET',
       url: '/target_terms/prev'
     }).done(function(json) {
-      if (typeof json.status !== 'undefined') {
-        if (json.status == 'ok') {
-          location.reload();
-        }
-      }
+      reloadOnPagination(json);
     }).fail(function(jqXHR, textStatus, errorThrown) {
       alert('error');
     })
@@ -28,11 +31,7 @@ $(document).on('turbolinks:load', function() {
       type: 'GET',
       url: '/target_terms/next'
     }).done(function(json) {
-      if (typeof json.status !== 'undefined') {
-        if (json.status == 'ok') {
-          location.reload();
-        }
-      }
+      reloadOnPagination(json);
     }).fail(function(jqXHR, textStatus, errorThrown) {
       alert('error');
     })
