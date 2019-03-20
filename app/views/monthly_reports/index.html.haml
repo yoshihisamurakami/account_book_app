@@ -6,4 +6,8 @@
   .col-sm-4
     = render 'shared/navi_month'
 
-= debug(@monthly_reports)
+- unless @monthly_reports.message.empty?
+  %div{style: "color: red;"}
+    = @monthly_reports.message
+- else
+  = render 'reports'

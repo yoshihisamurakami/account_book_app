@@ -118,7 +118,16 @@ class Book < ApplicationRecord
       .sum(:amount)
   end
 
-  def self.cost_of_living
-    5000
+  def self.cost_of_living(year,month,day, living_categories)
+    date = Date.new(year, month, day)
+    self
+      .where(
+        "books_date = ?", date)
+      .where(
+        special: false,
+        category_id: living_categories
+      ).payments
+      .without_transfer
+      .sum(:amount)
   end
 end
