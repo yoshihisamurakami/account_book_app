@@ -21,11 +21,14 @@ class MonthlyReportListModel
   def set_monthly_reports
     lastday = @target_term.lastday_of_month
     @reports = []
-    cost_total = 0
     (1..lastday).each do |day|
-      report = MonthlyReportModel.new(@target_term, @budget, lastday, day, cost_total)
+      report = MonthlyReportModel.new(@target_term, @budget, lastday, day)
       @reports.push report
-      cost_total = report.cost_total
+      report.set_cost_total(cost_total)
     end
+  end
+
+  def cost_total
+    @reports.inject(0) { |sum, report| sum + report.cost }
   end
 end

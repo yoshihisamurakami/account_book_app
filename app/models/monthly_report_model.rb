@@ -1,11 +1,13 @@
 class MonthlyReportModel
-  def initialize(target_term, budget, lastday, day, cost_total)
+  attr_reader :cost_total
+
+  def initialize(target_term, budget, lastday, day)
     @_target_term = target_term
     @_budget  = budget
     @_lastday = lastday
     @_day     = day
     @_cost_of_living_without_fixed = @_budget.cost_of_living_without_fixed
-    @_cost_total = cost_total
+    # @_cost_total = cost_total
   end
 
   def date
@@ -24,8 +26,8 @@ class MonthlyReportModel
   end
 
   # c) 生活費（累計）
-  def cost_total
-    @_cost_total + cost
+  def set_cost_total(cost_total)
+    @cost_total = cost_total
   end
 
   # d) 差分a - c
