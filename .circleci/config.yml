@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.5.1-node-browsers
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -26,6 +26,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run: gem update --system
       - run:
           name: install dependencies
           command: |
@@ -41,10 +42,10 @@ jobs:
       - run: bundle exec rake db:schema:load
 
       # run tests!
-        - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-        - run: mkdir ~/reports
-        - run:
-            command: bundle exec rake test TESTOPTS="--ci-dir=~/reports"
-            when: always
-        - store_test_results:
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run: mkdir ~/reports
+      - run:
+          command: bundle exec rake test TESTOPTS="--ci-dir=~/reports"
+          when: always
+      - store_test_results:
           path: ~/reports
