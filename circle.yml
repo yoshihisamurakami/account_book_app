@@ -1,0 +1,9 @@
+machine:
+  timezone:
+    Asia/Tokyo
+  ruby:
+    version: 2.5.1
+
+test:
+  override:
+    - rails test
