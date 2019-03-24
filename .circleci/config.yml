@@ -41,10 +41,10 @@ jobs:
       - run: bundle exec rake db:schema:load
 
       # run tests!
-        - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
-        - run: mkdir ~/reports
-        - run:
-            command: bundle exec rake test TESTOPTS="--ci-dir=~/reports"
-            when: always
-        - store_test_results:
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
+      - run: mkdir ~/reports
+      - run:
+          command: bundle exec rake test TESTOPTS="--ci-dir=~/reports"
+          when: always
+      - store_test_results:
           path: ~/reports
