@@ -5,5 +5,4 @@ class MonthlyReportsController < ApplicationController
     @target_term = TargetTermModel.new(session)
     @monthly_reports = MonthlyReportListModel.new(@target_term)
   end
-
 end
