@@ -26,10 +26,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: which ruby
-      - run: which gem
-      - run: who am i
-      - run: gem update --system
+      - run: sudo gem update --system
       - run:
           name: install dependencies
           command: |
