@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: circleci/ruby:2.5.1
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -28,6 +28,7 @@ jobs:
 
       - run: which ruby
       - run: which gem
+      - run: who am i
       - run: gem update --system
       - run:
           name: install dependencies
