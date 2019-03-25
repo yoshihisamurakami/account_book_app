@@ -221,6 +221,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+  execjs
   haml-rails (~> 2.0.0)
   jbuilder (~> 2.5)
   jquery-rails
