@@ -22,29 +22,21 @@ class Book < ApplicationRecord
   end
 
   # 当該オブジェクトの更新後の残高
-  def balance
+  def updated_balance
     return 0 if account.nil?
     balance = account.balance
     if persisted? and !amount_was.nil?
-      if deposit?
-        balance -= amount_was
-      else
-        balance += amount_was
-      end
+      balance = adjust_before_update(balance)
     end
-    if !amount.nil?
-      if deposit?
-        balance += amount
-      else
-        balance -= amount
-      end
+    unless amount.nil?
+      balance = update_amount_by_this_record(balance)
     end
     balance
   end
 
   # 残高がマイナスになったら false
   def valid_balance?
-    if balance < 0
+    if updated_balance < 0
       errors.add(:amount, " 残高がマイナスになるようです")
       return false
     end
@@ -129,5 +121,23 @@ class Book < ApplicationRecord
       ).payments
       .without_transfer
       .sum(:amount)
+  end
+
+  private
+
+  def adjust_before_update(balance)
+    if deposit?
+      balance - amount_was
+    else
+      balance + amount_was
+    end
+  end
+
+  def update_amount_by_this_record(balance)
+    if deposit?
+      balance + amount
+    else
+      balance - amount
+    end
   end
 end
