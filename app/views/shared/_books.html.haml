@@ -17,7 +17,7 @@
         %th 削除
     %tbody
       - books.each do |book|
-        %tr
+        %tr{:class => book.common? ? "book-common-user-" + book.user.id.to_s : ''}
           %td= book.books_date
           %td= book.user.name
           %td= book.account.name
