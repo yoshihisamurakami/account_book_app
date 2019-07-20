@@ -50,7 +50,9 @@ body {
   color: #777;
   margin-bottom: 1.0em;
 }
-
+.small-title {
+  font-size: 1.1em;
+}
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -248,4 +250,20 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .book-common-user-3 {
   background-color: #fee;
+}
+.report_days {
+  width: 500px;
+}
+.report-this-month-summary {
+  width: 350px;
+  float:left;
+}
+.budget-thismonth-title {
+  background-color: #ddf;
+}
+.indent {
+  margin-left: 1em;
+}
+.budget-mark {
+  color: blue;
 }

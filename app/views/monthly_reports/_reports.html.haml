@@ -1,18 +1,22 @@
-%table.table.table-striped.books_list{:style => "width: 500px;"}
-  %tr
-    %th= "日付"
-    %th.books_number
-      a)目標（累計）
-    %th.books_number
-      b)実績
-    %th.books_number
-      c)実績（累計）
-    %th.books_number
-      差分 a-c
-  - @monthly_reports.reports.each do |report|
+.row
+  = render 'report_this_month_summary'
+  
+.row
+  %table.table.table-striped.books_list.report_days
     %tr
-      %td{:nowrap => "nowrap"}= report.date
-      %td.books_number= report.budget.to_s(:delimited)
-      %td.books_number= report.cost.to_s(:delimited) unless report.cost.zero?
-      %td.books_number= report.cost_total.to_s(:delimited) unless report.cost.zero?
-      %td.books_number= report.diff.to_s(:delimited) unless report.cost.zero?
+      %th= "日付"
+      %th.books_number
+        a)目標（累計）
+      %th.books_number
+        b)実績
+      %th.books_number
+        c)実績（累計）
+      %th.books_number
+        差分 a-c
+    - @monthly_reports.reports.each do |report|
+      %tr
+        %td{:nowrap => "nowrap"}= report.date
+        %td.books_number= report.budget.to_s(:delimited)
+        %td.books_number= report.cost.to_s(:delimited) unless report.cost.zero?
+        %td.books_number= report.cost_total.to_s(:delimited) unless report.cost.zero?
+        %td.books_number= report.diff.to_s(:delimited) unless report.cost.zero?

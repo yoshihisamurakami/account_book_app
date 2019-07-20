@@ -1,0 +1,68 @@
+.report-this-month-summary
+  %p.small-title 月間の予算
+  %table.table.table-hover.books_list
+    %tboby
+      %tr.budget-thismonth-title
+        %td{:colspan => 2} 収入の部
+      %tr
+        %td
+          .indent 定期収入
+        %td.books_number
+          = @budget.regular_income.to_s(:delimited)
+      %tr
+        %td
+          .indent 臨時収入
+        %td.books_number
+          = @budget.extra_income.to_s(:delimited)
+      %tr
+        %td
+          .indent
+            合計）
+            %span.budget-mark= "(A)"
+        %td.books_number
+          = @budget.income_total.to_s(:delimited)
+      %tr.budget-thismonth-title
+        %td{:colspan => 2} 積立の部
+      %tr
+        %td
+          .indent 税金の積立
+        %td.books_number
+          = @budget.tax_funding.to_s(:delimited)
+      %tr
+        %td
+          .indent 特別経費の積立
+        %td.books_number
+          = @budget.special_funding.to_s(:delimited)
+      %tr
+        %td
+          .indent 貯金
+        %td.books_number
+          = @budget.savings.to_s(:delimited)
+      %tr
+        %td
+          .indent
+            合計）
+            %span.budget-mark= "(B)"
+        %td.books_number
+          = @budget.payments_total.to_s(:delimited)
+      %tr.budget-thismonth-title
+        %td{:colspan => 2} 支出の部
+      %tr
+        %td
+          .indent 
+            固定費の予算
+            %span.budget-mark= "(C)"
+        %td.books_number
+          = @budget.fixed_budget.to_s(:delimited)
+      %tr.budget-thismonth-title
+        %td{:colspan => 2} 生活費
+      %tr
+        %td
+          .indent 固定費を含めた生活費
+        %td.books_number
+          = @budget.cost_of_living.to_s(:delimited)
+      %tr
+        %td
+          .indent 固定費を除いた生活費
+        %td.books_number
+          = @budget.cost_of_living_without_fixed.to_s(:delimited)
