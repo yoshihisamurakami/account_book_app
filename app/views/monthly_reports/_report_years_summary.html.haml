@@ -1,0 +1,52 @@
+.report-years-summary
+  %p.small-title 年間の予算
+  %table.table.table-hover.books_list
+    %tboby
+      %tr.budget-years-title
+        %td{:colspan => 3} 収入の部
+      %tr
+        %td
+          %span.indent 年間合計
+        %td
+        %td.books_number= @years_report.reguler_income.to_s(:delimited)
+      %tr
+        %td
+          %span.indent 年間合計
+        %td
+        %td.books_number= @years_report.extra_income.to_s(:delimited)
+      %tr
+        %td
+          %span.indent= "合計）"
+        %td
+        %td.books_number= @years_report.income_total.to_s(:delimited)
+      %tr.budget-years-title
+        %td{:colspan => 3} 年間支出合計／積立累計
+      %tr
+        %td
+          %span.indent 税金
+        %td.books_number= @years_report.tax_total_actual.to_s(:delimited)
+        %td.books_number= @years_report.tax_funding.to_s(:delimited)
+      %tr
+        %td
+          %span.indent 特別経費
+        %td.books_number= @years_report.special_actual.to_s(:delimited)
+        %td.books_number= @years_report.special_funding.to_s(:delimited)
+      %tr
+        %td &nbsp;
+        %td
+        %td
+      %tr
+        %td &nbsp;
+        %td
+        %td
+      %tr.budget-years-title
+        %td{:colspan => 3} 支出の部
+      %tr
+        %td
+          %span.indent 年間総支出
+        %td
+        %td.books_number= @years_report.payment_total.to_s(:delimited)
+      %tr
+        %td{:colspan => 2}
+          %span.indent 年間収入－年間支出
+        %td.books_number= @years_report.diff.to_s(:delimited)
