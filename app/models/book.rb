@@ -13,7 +13,7 @@ class Book < ApplicationRecord
   after_initialize :set_default, if: :new_record?
 
   def set_default
-    self.books_date = Time.zone.now
+    self.books_date ||= Time.zone.now
     self.deposit ||= false
   end
 
