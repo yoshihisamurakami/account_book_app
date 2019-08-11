@@ -9,6 +9,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    params_to_session
     if @book.save
       flash[:success] = "保存されました。"
       redirect_to root_url
@@ -58,4 +59,9 @@ class BooksController < ApplicationController
     @book_view = BookViewModel.new(current_user, params)
   end
 
+  def params_to_session
+    session[:books_date] = @book.books_date
+    session[:account_id] = @book.account_id 
+    session[:category_id] = @book.category_id
+  end
 end
