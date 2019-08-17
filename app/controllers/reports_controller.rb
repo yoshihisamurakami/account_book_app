@@ -27,6 +27,36 @@ class ReportsController < ApplicationController
     end
   end
 
+  def deposit_payment
+    target_terms = get_target_terms
+    @report_target_terms = target_terms.select do |term|
+      Book.pure_payments_total(term[:year], term[:month]) > 0
+    end
+    tax_categories = Category.tax
+    fixed_categories = Category.where(is_fixed: true).select(:id)
+    variable_categories = Category.living
+
+    @report = []
+    @report_target_terms.each do |term|
+      pure_deposit = Book.pure_deposit_total(term[:year], term[:month])
+      tax = Book.categories_total(term[:year], term[:month], tax_categories)
+      special = Book.special_total(term[:year], term[:month])
+      fixed = Book.categories_total(term[:year], term[:month], fixed_categories)
+      variable = Book.categories_total(term[:year], term[:month], variable_categories)
+      @report << {
+        year: term[:year],
+        month: term[:month],
+        deposit: pure_deposit,
+        tax: tax,
+        special: special,
+        fixed: fixed,
+        variable: variable,
+        living: fixed + variable,
+        diff: pure_deposit - (tax + special + fixed + variable)
+      }
+    end
+  end
+
   private
 
   def get_target_terms

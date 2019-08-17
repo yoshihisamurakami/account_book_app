@@ -5,4 +5,8 @@ class Category < ApplicationRecord
   def self.living
     self.where(is_tax: false, is_fixed: false).select(:id)
   end
+
+  def self.tax
+    self.where(is_tax: true).select(:id)
+  end
 end

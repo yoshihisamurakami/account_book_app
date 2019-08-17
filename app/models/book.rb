@@ -12,6 +12,13 @@ class Book < ApplicationRecord
   before_destroy :check_balance_before_destroy
   after_initialize :set_default, if: :new_record?
 
+  scope :payments, -> { where(deposit: false) }
+  scope :deposits, -> { where(deposit: true) }
+  scope :without_transfer, -> { where(transfer: false) }
+  scope :privates, -> { where(common: false) }
+  scope :commons, -> { where(common: true) }
+  scope :specials, -> { where(special: true) }
+
   def set_default
     self.books_date ||= Time.zone.now
     self.deposit ||= false
@@ -82,31 +89,33 @@ class Book < ApplicationRecord
       .where("books_date <= ?", last)
   end
 
-  def self.payments
-    self.where(deposit: false)
-  end
-
-  def self.deposits
-    self.where(deposit: true)
-  end
-
-  def self.without_transfer
-    self.where(transfer: false)
-  end
-
-  def self.privates
-    self.where(common: false)
-  end
-
-  def self.commons
-    self.where(common: true)
-  end
-
   def self.pure_payments_total(year, month)
     self
       .get_all_on_target_month(year, month)
       .payments
       .without_transfer
+      .sum(:amount)
+  end
+
+  def self.pure_deposit_total(year, month)
+    self
+      .get_all_on_target_month(year, month)
+      .deposits
+      .without_transfer
+      .sum(:amount)
+  end
+
+  def self.categories_total(year, month, categories)
+    self
+    .get_all_on_target_month(year, month)
+    .where(category_id: categories, special: false)
+    .sum(:amount)
+  end
+
+  def self.special_total(year, month)
+    self
+      .get_all_on_target_month(year, month)
+      .specials
       .sum(:amount)
   end
 
