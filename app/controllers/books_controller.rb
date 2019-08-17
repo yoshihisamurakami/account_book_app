@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
-  before_action :set_book_view, only: [:edit, :update, :destroy]
+  before_action :set_books_updated_today, only: [:edit, :update, :destroy]
+  before_action :set_accounts, only: [:edit, :update, :destroy]
   before_action :require_logged_in, only: [:index]
+  include StaticPageActions
 
   def index
     @target_term = TargetTermModel.new(session)
@@ -53,10 +55,6 @@ class BooksController < ApplicationController
       :amount,
       :common, :business, :special,
     )
-  end
-
-  def set_book_view
-    @book_view = BookViewModel.new(current_user, params)
   end
 
   def params_to_session

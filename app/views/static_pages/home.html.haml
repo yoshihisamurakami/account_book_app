@@ -9,6 +9,6 @@
 
 .row
   .col-sm-12.top-margin
-    - if @book_view.updated_today.count > 0
+    - if @books_updated_today.present?
       %h2.title.margin_bottom 家計簿の一覧（24時間以内の入力）
-      = render 'shared/books', books: @book_view.updated_today
+      = render 'shared/books', books: @books_updated_today
