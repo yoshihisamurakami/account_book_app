@@ -57,6 +57,28 @@ class ReportsController < ApplicationController
     end
   end
 
+  def deposit
+    @target_term = TargetTermModel.new(session)
+    @books = Book
+      .get_on_target_month(@target_term.year, @target_term.month, params[:page])
+      .deposits
+      .without_transfer
+  end
+
+  def tax
+    @target_term = TargetTermModel.new(session)
+    @books = Book
+      .get_on_target_month(@target_term.year, @target_term.month, params[:page])
+      .where(category_id: Category.tax)
+  end
+  
+  def special
+    @target_term = TargetTermModel.new(session)
+    @books = Book
+      .get_on_target_month(@target_term.year, @target_term.month, params[:page])
+      .where(special: true)
+  end
+
   private
 
   def get_target_terms

@@ -18,5 +18,8 @@ Rails.application.routes.draw do
   get '/target_terms/next', to: 'target_terms#next', as: :next_month
   get '/reports/categories', to: 'reports#categories', as: :report_categories
   get '/reports/deposit_payment', to: 'reports#deposit_payment', as: :report_deposit_payment
+  get '/reports/deposit', to: 'reports#deposit', as: :report_deposit
+  get '/reports/tax', to: 'reports#tax', as: :report_tax
+  get '/reports/special', to: 'reports#special', as: :report_special
   get '/monthly_report',     to: 'monthly_reports#index'
 end
