@@ -28,6 +28,7 @@ class AccountsController < ApplicationController
     @account_name = account.name
     @books = account.books
       .get_all_on_target_month(@target_term.year, @target_term.month)
+      .order(:books_date)
     @carryover = 0
     unless @books.empty?
       @carryover = account.balance_before_target_date(@books.first.books_date)
