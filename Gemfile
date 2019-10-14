@@ -42,7 +42,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails-i18n'
 gem "loofah", ">= 2.2.3"
-gem "rubyzip", ">= 1.2.2"
+gem "rubyzip", ">= 1.3.0"
 gem "rack", ">= 2.0.6"
 gem "will_paginate", ">= 3.1.6"
 gem 'bootstrap-will_paginate', '>= 1.0.0'
