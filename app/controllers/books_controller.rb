@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_books_updated_today, only: [:edit, :update, :destroy]
-  before_action :set_accounts, only: [:edit, :update, :destroy]
+  before_action :set_accounts, only: [:create, :edit, :update, :destroy]
   before_action :require_logged_in, only: [:index]
   include StaticPageActions
 
