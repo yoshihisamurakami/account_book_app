@@ -43,7 +43,7 @@ gem 'jquery-ui-rails'
 gem 'rails-i18n'
 gem "loofah", ">= 2.2.3"
 gem "rubyzip", ">= 1.3.0"
-gem "rack", ">= 2.0.6"
+gem "rack", ">= 2.0.8"
 gem "will_paginate", ">= 3.1.6"
 gem 'bootstrap-will_paginate', '>= 1.0.0'
 gem "nokogiri", ">= 1.10.4"

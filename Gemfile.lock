@@ -127,7 +127,7 @@ GEM
     pg (1.1.4)
     public_suffix (4.0.1)
     puma (3.12.2)
-    rack (2.0.7)
+    rack (2.2.2)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4)
@@ -236,7 +236,7 @@ DEPENDENCIES
   nokogiri (>= 1.10.4)
   pg (>= 0.20.0)
   puma (~> 3.12)
-  rack (>= 2.0.6)
+  rack (>= 2.0.8)
   rails (~> 5.2.4)
   rails-controller-testing
   rails-i18n
