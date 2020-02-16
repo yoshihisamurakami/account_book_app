@@ -81,6 +81,15 @@ class Book < ApplicationRecord
       .paginate(page: page)
   end
 
+  def self.get_on_target_year(year)
+    start = Date.new(year, 1, 1)
+    last  = Date.new(year, 12, 31)
+    self
+      .where("books_date >= ?", start)
+      .where("books_date <= ?", last)
+      .order(:books_date, :created_at)
+  end
+
   def self.get_all_on_target_month(year, month)
     start = Date.new(year, month, 1)
     last  = Date.new(year, month, -1)

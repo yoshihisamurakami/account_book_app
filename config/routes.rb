@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get '/reports/tax', to: 'reports#tax', as: :report_tax
   get '/reports/special', to: 'reports#special', as: :report_special
   get '/monthly_report',     to: 'monthly_reports#index'
+  get '/books/tsv', to: 'books#tsv'
 end
