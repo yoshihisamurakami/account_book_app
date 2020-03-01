@@ -11,7 +11,7 @@ ruby '2.5.7'
 gem 'rails', '~> 5.2.4'
 
 # Use Puma as the app server
-gem 'puma', '~> 3.12'
+gem 'puma', '>= 3.12.3'
 # Use SCSSC for stylesheets
 gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
