@@ -46,7 +46,7 @@ gem "rubyzip", ">= 1.3.0"
 gem "rack", ">= 2.0.8"
 gem "will_paginate", ">= 3.1.6"
 gem 'bootstrap-will_paginate', '>= 1.0.0'
-gem "nokogiri", ">= 1.10.4"
+gem "nokogiri", ">= 1.10.8"
 
 gem 'pg', '>= 0.20.0'
 
