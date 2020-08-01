@@ -236,7 +236,7 @@ DEPENDENCIES
   minitest-ci
   nokogiri (>= 1.10.8)
   pg (>= 0.20.0)
-  puma (>= 3.12.3)
+  puma (>= 4.3.5)
   rack (>= 2.0.8)
   rails (~> 5.2.4)
   rails-controller-testing
