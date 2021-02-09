@@ -21,7 +21,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "/help ページにアクセスできること" do
     get help_path
     assert_response :success
-    assert_select "title", "ヘルプ - 家計簿App"
+    assert_select "title", "Help - 家計簿App"
   end
 
 end
