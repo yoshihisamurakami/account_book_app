@@ -27,6 +27,7 @@ jobs:
             - v1-dependencies-
 
       - run: sudo gem update --system
+      - run: sudo bundle update --bundler
       - run:
           name: install dependencies
           command: |
