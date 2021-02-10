@@ -47,30 +47,8 @@ class BooksController < ApplicationController
 
   def tsv
     target_term = TargetTermModel.new(session)
-    books = Book.get_on_target_year(target_term.year)
-    tsv_data = CSV.generate(:col_sep => "\t") do |tsv|
-      columns = %W(id books_date user_id account_id deposit transfer category_id summary amount
-                   common business special created_at updated_at)
-      tsv << columns
-      books.each do |book|
-        tsv << [
-          book.id,
-          book.books_date,
-          book.user_id,
-          book.account_id,
-          book.deposit,
-          book.transfer,
-          book.category_id,
-          book.summary,
-          book.amount,
-          book.common,
-          book.business,
-          book.special,
-          book.created_at,
-          book.updated_at
-        ]
-      end
-    end
+    books_tsv = BooksTsv.new(target_term.year)
+    tsv_data = books_tsv.get
     send_data tsv_data, type: 'text/tsv; charset=utf-8', filename: "tmpfile.tsv"
   end
 
