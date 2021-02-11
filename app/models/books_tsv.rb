@@ -18,8 +18,7 @@ class BooksTsv
 
   def target_books
     Book
-      .joins(:user, :account)
-      .eager_load(:category)
+      .eager_load(:user, :account, :category)
       .target_year(@year)
       .order(:books_date, 'books.created_at')
   end
@@ -41,7 +40,7 @@ class BooksTsv
       book.deposit,
       book.transfer,
       book.category_id,
-      book.category&.name,
+      book.category_name,
       book.summary,
       book.amount,
       book.common,

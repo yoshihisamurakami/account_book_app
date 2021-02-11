@@ -14,6 +14,7 @@ class Book < ApplicationRecord
 
   delegate :name, to: :user, prefix: true
   delegate :name, to: :account, prefix: true
+  delegate :name, to: :category, prefix: true, allow_nil: true
 
   scope :payments, -> { where(deposit: false) }
   scope :deposits, -> { where(deposit: true) }
