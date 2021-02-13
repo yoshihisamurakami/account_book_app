@@ -27,7 +27,7 @@ class AccountsController < ApplicationController
     account = Account.find(params[:id])
     @account_name = account.name
     @books = account.books
-      .get_all_on_target_month(@target_term.year, @target_term.month)
+      .target_month(@target_term.year, @target_term.month)
       .order(:books_date)
     @carryover = 0
     unless @books.empty?

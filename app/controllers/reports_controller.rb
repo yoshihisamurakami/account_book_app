@@ -91,7 +91,7 @@ class ReportsController < ApplicationController
 
   def get_monthly_summary(term)
     Book
-      .get_all_on_target_month(term[:year], term[:month])
+      .target_month(term[:year], term[:month])
       .payments
       .without_transfer
       .group(:category_id)
