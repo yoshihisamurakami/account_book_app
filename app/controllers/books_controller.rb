@@ -6,7 +6,11 @@ class BooksController < ApplicationController
 
   def index
     @target_term = TargetTermModel.new(session)
-    @books = Book.get_on_target_month(@target_term.year, @target_term.month, params[:page])
+    @books = Book
+      .eager_load(:user, :account, :category)
+      .target_month(@target_term.year, @target_term.month)
+      .page(params[:page])
+      .order(:books_date, :created_at)
   end
 
   def create

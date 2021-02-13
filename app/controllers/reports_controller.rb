@@ -59,24 +59,17 @@ class ReportsController < ApplicationController
 
   def deposit
     @target_term = TargetTermModel.new(session)
-    @books = Book
-      .get_on_target_month(@target_term.year, @target_term.month, params[:page])
-      .deposits
-      .without_transfer
+    @books = report_base_books.deposits.without_transfer
   end
 
   def tax
     @target_term = TargetTermModel.new(session)
-    @books = Book
-      .get_on_target_month(@target_term.year, @target_term.month, params[:page])
-      .where(category_id: Category.tax)
+    @books = report_base_books.where(category_id: Category.tax)
   end
   
   def special
     @target_term = TargetTermModel.new(session)
-    @books = Book
-      .get_on_target_month(@target_term.year, @target_term.month, params[:page])
-      .where(special: true)
+    @books = report_base_books.where(special: true)
   end
 
   private
@@ -98,10 +91,18 @@ class ReportsController < ApplicationController
 
   def get_monthly_summary(term)
     Book
-      .get_all_on_target_month(term[:year], term[:month])
+      .target_month(term[:year], term[:month])
       .payments
       .without_transfer
       .group(:category_id)
       .sum(:amount)
   end
+
+  def report_base_books
+    Book
+      .target_month(@target_term.year, @target_term.month)
+      .page(params[:page])
+      .order(:books_date, :created_at)
+  end
+
 end

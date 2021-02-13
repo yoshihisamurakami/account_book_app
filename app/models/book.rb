@@ -28,6 +28,11 @@ class Book < ApplicationRecord
     .where("books_date <= ?", Date.new(year, 12, 31))
   }
 
+  scope :target_month, ->(year, month) {
+    where("books_date >= ?", Date.new(year, month, 1))
+    .where("books_date <= ?", Date.new(year, month, -1))
+  }
+
   def set_default
     self.books_date ||= Time.zone.now
     self.deposit ||= false
@@ -80,27 +85,9 @@ class Book < ApplicationRecord
     throw(:abort) if !valid_balance?
   end
 
-  def self.get_on_target_month(year, month, page)
-    start = Date.new(year, month, 1)
-    last  = Date.new(year, month, -1)
-    self
-      .where("books_date >= ?", start)
-      .where("books_date <= ?", last)
-      .order(:books_date, :created_at)
-      .paginate(page: page)
-  end
-
-  def self.get_all_on_target_month(year, month)
-    start = Date.new(year, month, 1)
-    last  = Date.new(year, month, -1)
-    self
-      .where("books_date >= ?", start)
-      .where("books_date <= ?", last)
-  end
-
   def self.pure_payments_total(year, month)
     self
-      .get_all_on_target_month(year, month)
+      .target_month(year, month)
       .payments
       .without_transfer
       .sum(:amount)
@@ -108,7 +95,7 @@ class Book < ApplicationRecord
 
   def self.pure_deposit_total(year, month)
     self
-      .get_all_on_target_month(year, month)
+      .target_month(year, month)
       .deposits
       .without_transfer
       .sum(:amount)
@@ -116,14 +103,14 @@ class Book < ApplicationRecord
 
   def self.categories_total(year, month, categories)
     self
-    .get_all_on_target_month(year, month)
-    .where(category_id: categories, special: false)
-    .sum(:amount)
+      .target_month(year, month)
+      .where(category_id: categories, special: false)
+      .sum(:amount)
   end
 
   def self.special_total(year, month)
     self
-      .get_all_on_target_month(year, month)
+      .target_month(year, month)
       .specials
       .sum(:amount)
   end

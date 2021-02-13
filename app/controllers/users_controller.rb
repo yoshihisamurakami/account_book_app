@@ -17,7 +17,11 @@ class UsersController < ApplicationController
       redirect_to root_url
     end
     @target_term = TargetTermModel.new(session)
-    @books = @user.books.get_on_target_month(@target_term.year, @target_term.month, params[:page])
+    @books = @user
+      .books
+      .target_month(@target_term.year, @target_term.month)
+      .page(params[:page])
+      .order(:books_date, :created_at)
     @user_books_view = UserBooksViewModel.new(@user, @target_term)
   end
 

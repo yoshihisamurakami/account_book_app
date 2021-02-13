@@ -21,7 +21,7 @@ class UserBooksViewModel
       .payments
       .without_transfer
       .privates
-      .get_all_on_target_month(self.target_term.year, self.target_term.month)
+      .target_month(self.target_term.year, self.target_term.month)
   end
 
   def _common_books
@@ -29,7 +29,7 @@ class UserBooksViewModel
       .payments
       .without_transfer
       .commons
-      .get_all_on_target_month(self.target_term.year, self.target_term.month)
+      .target_month(self.target_term.year, self.target_term.month)
   end
 
 end
