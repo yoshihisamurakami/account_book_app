@@ -24,15 +24,10 @@ class AccountsController < ApplicationController
 
   def books
     @target_term = TargetTermModel.new(session)
-    account = Account.find(params[:id])
-    @account_name = account.name
-    @books = account.books
-      .target_month(@target_term.year, @target_term.month)
-      .order(:books_date)
-    @carryover = 0
-    unless @books.empty?
-      @carryover = account.balance_before_target_date(@books.first.books_date)
-    end
+    account_books = AccountBooks.new(params[:id], @target_term.year, @target_term.month)
+    @account_name = account_books.account_name
+    @books = account_books.books
+    @carryover = account_books.carryover
   end
 
   def edit
