@@ -8,7 +8,7 @@ end
 ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 5.2.5'
 
 # Use Puma as the app server
 gem 'puma', '>= 5.0.0'
@@ -48,7 +48,7 @@ gem "rack", ">= 2.2.3"
 gem "will_paginate", ">= 3.1.6"
 gem 'bootstrap-will_paginate', '>= 1.0.0'
 gem "nokogiri", ">= 1.10.8"
-gem "actionview", ">= 5.2.4.4"
+gem "actionview"
 
 gem 'pg', '>= 0.20.0'
 
