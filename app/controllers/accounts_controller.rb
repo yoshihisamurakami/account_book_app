@@ -36,7 +36,7 @@ class AccountsController < ApplicationController
 
   def update
     @account = Account.find(params[:id])
-    if @account.update_attributes(account_params)
+    if @account.update(account_params)
       flash[:success] = "口座情報が更新されました。"
       redirect_to accounts_path
     else

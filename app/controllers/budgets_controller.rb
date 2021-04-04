@@ -26,7 +26,7 @@ class BudgetsController < ApplicationController
 
   def update
     @budget = Budget.find(params[:id])
-    if @budget.update_attributes(budget_params)
+    if @budget.update(budget_params)
       flash[:success] = "予算が更新されました。"
       redirect_to budgets_path
     else

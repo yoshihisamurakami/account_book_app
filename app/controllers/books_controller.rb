@@ -35,7 +35,7 @@ class BooksController < ApplicationController
     #   copy
     #   return
     # else
-      if @book.update_attributes(book_params)
+      if @book.update(book_params)
         flash[:success] = "更新されました。"
         redirect_to root_url
       else
