@@ -72,6 +72,11 @@ class ReportsController < ApplicationController
     @books = report_base_books.where(special: true)
   end
 
+  def business
+    @target_term = TargetTermModel.new(session)
+    @books = report_base_books.where(business: true)
+  end
+
   private
 
   def get_target_terms

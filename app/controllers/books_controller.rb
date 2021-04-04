@@ -31,13 +31,30 @@ class BooksController < ApplicationController
 
   def update
     @book = Book.find(params[:id])
-    if @book.update_attributes(book_params)
-      flash[:success] = "更新されました。"
-      redirect_to root_url
-    else
-      render 'static_pages/home'
-    end
+    # if params[:commit] == 'コピー'
+    #   copy
+    #   return
+    # else
+      if @book.update_attributes(book_params)
+        flash[:success] = "更新されました。"
+        redirect_to root_url
+      else
+        render 'static_pages/home'
+      end
+    # end
   end
+
+  # update時 （確定申告向けコピー操作時に使う）
+  # def copy
+  #   @book = Book.new(book_params)
+  #   params_to_session
+  #   if @book.save
+  #     flash[:success] = "コピーされました！！"
+  #     redirect_to root_url
+  #   else
+  #     render 'static_pages/home'
+  #   end
+  # end
 
   def destroy
     @book = Book.find(params[:id])

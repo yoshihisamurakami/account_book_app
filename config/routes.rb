@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/reports/deposit', to: 'reports#deposit', as: :report_deposit
   get '/reports/tax', to: 'reports#tax', as: :report_tax
   get '/reports/special', to: 'reports#special', as: :report_special
+  get '/reports/business', to: 'reports#business', as: :report_business
   get '/monthly_report',     to: 'monthly_reports#index'
   get '/books/tsv', to: 'books#tsv'
 end
