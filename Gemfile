@@ -11,7 +11,7 @@ ruby '2.6.6'
 gem 'rails', '~> 5.2.5'
 
 # Use Puma as the app server
-gem 'puma', '>= 5.0.0'
+gem 'puma'
 
 # Use SCSSC for stylesheets
 gem 'sassc-rails'
@@ -38,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails', '= 1.0.0'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'rails-controller-testing'
-gem 'bcrypt',         '~> 3.1.11'
+gem 'bcrypt'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'rails-i18n'
