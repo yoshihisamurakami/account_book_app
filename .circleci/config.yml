@@ -1,47 +1,52 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
-version: 2
+version: 2.1
+
+orbs:
+  ruby: circleci/ruby@1.1.1
+  node: circleci/node@4.0.0
+
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.6.2
+      - image: cimg/ruby:2.6.6-node
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+    steps:
+      - checkout
+      - ruby/install-deps:
+          bundler-version: 1.17.3
+      # - node/install-packages: 
+      #     pkg-manager: yarn
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
-
-    working_directory: ~/repo
+  test:
+    docker:
+      - image: cimg/ruby:2.6.6-node
+      - image: circleci/postgres:13.1
+        environment:
+          POSTGRES_USER: circleci
+          POSTGRES_DB: blog_rails6_test
+          POSTGRES_HOST_AUTH_METHOD: trust # パスワードなし
+    environment:
+      BUNDLE_JOBS: "3"
+      BUNDLE_RETRY: "3"
+      PGHOST: 127.0.0.1
+      PGUSER: circleci
+      PGPASSWORD: ""
+      TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+      RAILS_ENV: test
 
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
-      - run: sudo gem update --system
-      - run: sudo bundle update --bundler
+      - ruby/install-deps:
+          bundler-version: 1.17.3
+      # - node/install-packages: 
+      #     pkg-manager: yarn
       - run:
-          name: install dependencies
+          name: DB Initializing
           command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-      # Database setup
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:schema:load
-
+            dockerize -wait tcp://localhost:5432 -timeout 1m
+            bundle exec rake db:create
+          # bundle exec rake db:schema:load
       # run tests!
       - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3
       - run: mkdir ~/reports
@@ -50,3 +55,12 @@ jobs:
           when: always
       - store_test_results:
           path: ~/reports
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
