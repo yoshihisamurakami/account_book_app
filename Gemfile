@@ -8,7 +8,7 @@ end
 ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '6.1.4'
+gem 'rails', '6.0.3.6'
 
 # Use Puma as the app server
 gem 'puma'
@@ -54,9 +54,6 @@ gem 'pg'
 
 # circleci用
 gem "mini_racer"
-
-# actionpackアップグレード(2021-08-14)
-gem "actionpack", ">= 6.0.3.7"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
