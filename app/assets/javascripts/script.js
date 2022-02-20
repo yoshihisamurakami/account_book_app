@@ -67,6 +67,9 @@ $(document).on('turbolinks:load', function() {
         val: val
       }
     }).done(function(json) {
+      if (json.is_checked_business == true) {
+        $(`#book_${id}`).prop('checked', true);
+      }
     }).fail(function(jqXHR, textStatus, errorThrown) {
       alert('error');
     });   
@@ -110,6 +113,7 @@ $(document).on('turbolinks:load', function() {
         val: val
       }
     }).done(function(json) {
+      $(`#book_amount_${id}`).val(json.formatted_amount);
     }).fail(function(jqXHR, textStatus, errorThrown) {
       alert('error');
     });
