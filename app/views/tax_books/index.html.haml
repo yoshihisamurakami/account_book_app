@@ -1,0 +1,9 @@
+- provide(:title, '家計簿の一覧(確定申告作業用)')
+
+.row
+  .col-sm-8
+    %p memo : 該当月に入力されたもの全件 確定申告作業用
+  .col-sm-4
+    = render 'shared/navi_month'
+
+= render 'tax_books', books: @books

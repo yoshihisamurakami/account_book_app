@@ -14,6 +14,14 @@ Rails.application.routes.draw do
   resources :books,    only: [:create, :index, :edit, :update, :destroy]
   resources :budgets,  only: [:new, :create, :index, :edit, :update, :destroy]
 
+  # 確定申告用
+  resources :tax_books,    only: [:index] do
+    patch 'update_category'
+    patch 'update_summary'
+    patch 'update_amount'
+    patch 'update_business'
+  end
+
   get '/target_terms/prev', to: 'target_terms#prev', as: :prev_month
   get '/target_terms/next', to: 'target_terms#next', as: :next_month
   get '/reports/categories', to: 'reports#categories', as: :report_categories

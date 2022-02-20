@@ -1,0 +1,33 @@
+%div.books_list_area
+  %table.table.table-hover.books_list
+    %thead
+      %tr
+        %th 日付
+        %th 入力者
+        %th 口座
+        %th 入出金
+        %th カテゴリ
+        %th 摘要
+        %th 入金
+        %th 出金
+        %th.center 共通
+        %th.center 事業
+        %th.center 特別
+        %th 修正
+        %th 削除
+    %tbody
+      - books.each do |book|
+        %tr{:class => book.common? ? "book-common-user-" + book.user.id.to_s : ''}
+          %td= book.books_date
+          %td= book.user.name
+          %td= book.account.name
+          %td= book.deposit? ? '入金' : '出金'
+          %td= select_tag "category_#{book.id}", options_for_select(@category_select, book.category&.id), { class: 'tax_book_category', id: "book_category_#{book.id}" } 
+          %td= text_field_tag "summary_#{book.id}", book.summary, { class: 'tax_book_summary', id: "book_summary_#{book.id}", style: "width: 15em;" }
+          %td.books_number= book.deposit? ? book.amount.to_s(:delimited) : '-'
+          %td.books_number= book.deposit? ? '-' : text_field_tag("amount_#{book.id}", book.amount.to_s(:delimited), { class: 'tax_book_amount', id: "book_amount_#{book.id}", style: "text-align: right; width: 5em;" })
+          %td.center= book.common? ? 'o' : '-'
+          %td.center= check_box_tag "book_#{book.id}", true, book.business?, { class: 'book_business_checkbox' }
+          %td.center= book.special? ? 'o' : '-'
+          %td= link_to "変更", edit_book_path(book)
+          %td= link_to "削除", book, method: :delete, data: { confirm: "本当に削除しますか?" }

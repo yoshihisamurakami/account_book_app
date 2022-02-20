@@ -28,4 +28,90 @@ $(document).on('turbolinks:load', function() {
     })
     return false;
   })
+
+  // 確定申告用
+  $('.book_business_checkbox').on('click', function() {
+    const attr_id = $(this).attr('id');
+    const checked = $(this).prop("checked");
+    const id = attr_id.replace('book_', '');
+    update_business(id, checked);
+  })
+
+  // 事業経費チェックの更新
+  const update_business = (id, checked) => {
+    $.ajax({
+      type: 'PATCH',
+      url: `/tax_books/${id}/update_business`,
+      data: {
+        checked: checked
+      }
+    }).done(function(json) {
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert('error');
+    });   
+  }
+
+  $('.tax_book_category').change(function() {
+    const attr_id = $(this).attr('id');
+    const val = $(this).val();
+    const id = attr_id.replace('book_category_', '');
+    update_category(id, val);
+  })
+
+  // カテゴリの更新
+  const update_category = (id, val) => {
+    $.ajax({
+      type: 'PATCH',
+      url: `/tax_books/${id}/update_category`,
+      data: {
+        val: val
+      }
+    }).done(function(json) {
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert('error');
+    });   
+  }
+
+  // 適用エリアの更新
+  $('.tax_book_summary').on('focusout', function() {
+    const attr_id = $(this).attr('id');
+    const val = $(this).val();
+    const id = attr_id.replace('book_summary_', '');
+    update_summary(id, val);
+  })
+
+  // 適用の更新
+  const update_summary = (id, val) => {
+    $.ajax({
+      type: 'PATCH',
+      url: `/tax_books/${id}/update_summary`,
+      data: {
+        val: val
+      }
+    }).done(function(json) {
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert('error');
+    });
+  }
+
+  // 金額エリアの更新
+  $('.tax_book_amount').on('focusout', function() {
+    const attr_id = $(this).attr('id');
+    const val = $(this).val();
+    const id = attr_id.replace('book_amount_', '');
+    update_amount(id, val);
+  })
+
+  const update_amount = (id, val) => {
+    $.ajax({
+      type: 'PATCH',
+      url: `/tax_books/${id}/update_amount`,
+      data: {
+        val: val
+      }
+    }).done(function(json) {
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+      alert('error');
+    });
+  }
 });
