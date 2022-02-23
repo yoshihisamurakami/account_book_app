@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     patch 'update_amount'
     patch 'update_business'
   end
+  resources :tax_summaries, only: [:index]
 
   get '/target_terms/prev', to: 'target_terms#prev', as: :prev_month
   get '/target_terms/next', to: 'target_terms#next', as: :next_month

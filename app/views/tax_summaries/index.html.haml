@@ -1,0 +1,14 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %td 
+      %td.books_number 合計金額
+      %td.books_number 按分
+      %td.books_number 合計 x 按分
+  %tbody
+    - @summaries.each do |summary|
+      %tr
+        %td= summary[:category_name]
+        %td.books_number= summary[:amount].to_s(:delimited)
+        %td.books_number= summary[:division]
+        %td.books_number= summary[:result_amount].to_s(:delimited)
