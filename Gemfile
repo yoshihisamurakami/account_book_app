@@ -52,9 +52,6 @@ gem "actionview"
 
 gem 'pg'
 
-# circleci用
-gem "mini_racer"
-
 # actionpack upgrade (2022-02-05)
 gem "actionpack", ">= 6.0.4.2"
 
