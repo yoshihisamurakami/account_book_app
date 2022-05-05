@@ -70,9 +70,9 @@ class UsersController < ApplicationController
 
   def require_admin_or_correct_user
     @user = User.find(params[:id])
-    if !logged_in?
+    if !user_session.logged_in?
       redirect_to login_url
-    elsif !@current_user.admin? and @current_user != @user
+    elsif !current_user&.admin? and current_user != @user
       redirect_to root_url
     end
   end
