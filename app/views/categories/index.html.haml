@@ -1,7 +1,7 @@
 - provide(:title, "カテゴリ管理")
 
 .table-category
-  - if current_user.admin?
+  - if user_session.current_user&.admin?
     = link_to "新規作成", new_category_path, class: "btn btn-primary"
 
   %table.table.table-hover.table-admin
@@ -24,7 +24,7 @@
           %td.center= "○" if category.is_food?
 
           %td.td-operation
-            - if current_user.admin?
+            - if user_session.current_user&.admin?
               = link_to "編集", edit_category_path(category)
               &nbsp;
               = link_to "削除", category, method: :delete, data: { confirm: "本当に削除しますか?" }
