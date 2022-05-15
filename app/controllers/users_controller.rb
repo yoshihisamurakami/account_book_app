@@ -2,27 +2,10 @@ class UsersController < ApplicationController
 
   before_action :require_admin, only: [:index, :new, :create]
   before_action :require_admin_or_correct_user, only: [:edit, :update]
-  before_action :require_logged_in, only: [:show]
 
   # GET /users   -> users_path
   def index
     @users = User.all.order(:id)
-  end
-
-  # GET /users/1  -> user_path(user)
-  def show
-    @user = User.find_by(id: params[:id])
-    if @user.nil?
-      flash[:danger] = '指定したユーザーがみつかりません'
-      redirect_to root_url
-    end
-    @target_term = TargetTermModel.new(session)
-    @books = @user
-      .books
-      .target_month(@target_term.year, @target_term.month)
-      .page(params[:page])
-      .order(:books_date, :created_at)
-    @user_books_view = UserBooksViewModel.new(@user, @target_term)
   end
 
   # GET /users/new  -> new_user_path

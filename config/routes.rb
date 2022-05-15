@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   resources :users
+  get 'user/:id/books', to: 'user_books#index', as: 'user_books'
+
   resources :accounts do
     get 'books', on: :member
   end
