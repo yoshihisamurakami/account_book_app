@@ -9,11 +9,7 @@ class UserBooksController < ApplicationController
       redirect_to root_url
     end
     @target_month = TargetMonth.new(session)
-    @books = @user
-      .books
-      .target_month(@target_month.year, @target_month.month)
-      .page(params[:page])
-      .order(:books_date, :created_at)
-    @user_books_view = UserBooksViewModel.new(@user, @target_month)
+    @user_books_summary = UserBooksSummary.new(@user, @target_month)
+    @books = @user.books_list(target_month: @target_month, page: params[:page])
   end
 end
