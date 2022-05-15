@@ -5,10 +5,10 @@ class BooksController < ApplicationController
   include StaticPageActions
 
   def index
-    @target_term = TargetTermModel.new(session)
+    @target_month = TargetMonth.new(session)
     @books = Book
       .eager_load(:user, :account, :category)
-      .target_month(@target_term.year, @target_term.month)
+      .target_month(@target_month.year, @target_month.month)
       .page(params[:page])
       .order(:books_date, :created_at)
   end
@@ -67,7 +67,7 @@ class BooksController < ApplicationController
   end
 
   def tsv
-    target_term = TargetTermModel.new(session)
+    target_term = TargetMonth.new(session)
     books_tsv = BooksTsv.new(target_term.year)
     tsv_data = books_tsv.get
     send_data tsv_data, type: 'text/tsv; charset=utf-8', filename: "tmpfile.tsv"

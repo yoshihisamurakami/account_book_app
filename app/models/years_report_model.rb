@@ -1,15 +1,15 @@
 class YearsReportModel
 
   def initialize(target_term)
-    @target_term = target_term
+    @target_month = target_term
   end
 
   def reguler_income
-    Budget.where(target_year: @target_term.year).sum(:regular_income)
+    Budget.where(target_year: @target_month.year).sum(:regular_income)
   end
 
   def extra_income
-    Budget.where(target_year: @target_term.year).sum(:extra_income)
+    Budget.where(target_year: @target_month.year).sum(:extra_income)
   end
 
   def income_total
@@ -27,7 +27,7 @@ class YearsReportModel
 
   # 税金積立合計
   def tax_funding
-    Budget.where(target_year: @target_term.year).sum(:tax_funding)
+    Budget.where(target_year: @target_month.year).sum(:tax_funding)
   end
 
   # 特別経費支出の合計（実績値）
@@ -41,7 +41,7 @@ class YearsReportModel
 
   # 特別経費積立の合計
   def special_funding
-    Budget.where(target_year: @target_term.year).sum(:special_funding)
+    Budget.where(target_year: @target_month.year).sum(:special_funding)
   end
 
   # 年間支出合計（実績値）
@@ -61,10 +61,10 @@ class YearsReportModel
   private
 
   def years_first_day
-    Date.new(@target_term.year, 1, 1)
+    Date.new(@target_month.year, 1, 1)
   end
 
   def years_last_day
-    Date.new(@target_term.year, 12, 31)
+    Date.new(@target_month.year, 12, 31)
   end
 end

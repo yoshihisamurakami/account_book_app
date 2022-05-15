@@ -58,22 +58,22 @@ class ReportsController < ApplicationController
   end
 
   def deposit
-    @target_term = TargetTermModel.new(session)
+    @target_month = TargetMonth.new(session)
     @books = report_base_books.deposits.without_transfer
   end
 
   def tax
-    @target_term = TargetTermModel.new(session)
+    @target_month = TargetMonth.new(session)
     @books = report_base_books.where(category_id: Category.tax)
   end
   
   def special
-    @target_term = TargetTermModel.new(session)
+    @target_month = TargetMonth.new(session)
     @books = report_base_books.where(special: true)
   end
 
   def business
-    @target_term = TargetTermModel.new(session)
+    @target_month = TargetMonth.new(session)
     @books = report_base_books.where(business: true)
   end
 
@@ -105,7 +105,7 @@ class ReportsController < ApplicationController
 
   def report_base_books
     Book
-      .target_month(@target_term.year, @target_term.month)
+      .target_month(@target_month.year, @target_month.month)
       .page(params[:page])
       .order(:books_date, :created_at)
   end

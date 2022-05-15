@@ -23,8 +23,8 @@ class AccountsController < ApplicationController
   end
 
   def books
-    @target_term = TargetTermModel.new(session)
-    account_books = AccountBooks.new(params[:id], @target_term.year, @target_term.month)
+    @target_month = TargetMonth.new(session)
+    account_books = AccountBooks.new(params[:id], @target_month.year, @target_month.month)
     @account_name = account_books.account_name
     @books = account_books.books
     @carryover = account_books.carryover
