@@ -65,4 +65,6 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.include Rails.application.routes.url_helpers
+
+  config.include LogInModule, type: :request
 end
