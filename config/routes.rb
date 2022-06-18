@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   resources :books,    only: [:create, :index, :edit, :update, :destroy]
   resources :budgets,  only: [:new, :create, :index, :edit, :update, :destroy]
 
-  get '/target_terms/prev', to: 'target_terms#prev', as: :prev_month
-  get '/target_terms/next', to: 'target_terms#next', as: :next_month
+  get '/target_months/prev', to: 'target_months#prev', as: :prev_month
+  get '/target_months/next', to: 'target_months#next', as: :next_month
   get '/reports/categories', to: 'reports#categories', as: :report_categories
   get '/reports/deposit_payment', to: 'reports#deposit_payment', as: :report_deposit_payment
   get '/reports/deposit', to: 'reports#deposit', as: :report_deposit

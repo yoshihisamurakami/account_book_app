@@ -33,6 +33,12 @@ class Book < ApplicationRecord
     .where("books_date <= ?", Date.new(year, month, -1))
   }
 
+  scope :target_month_and_page, ->(target_month:, page:) {
+    target_month(target_month.year, target_month.month)
+    .page(page)
+    .order(:books_date, :created_at)
+  }
+
   def set_default
     self.books_date ||= Time.zone.now
     self.deposit ||= false

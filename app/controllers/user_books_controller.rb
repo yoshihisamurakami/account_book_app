@@ -8,12 +8,8 @@ class UserBooksController < ApplicationController
       flash[:danger] = '指定したユーザーがみつかりません'
       redirect_to root_url
     end
-    @target_term = TargetTermModel.new(session)
-    @books = @user
-      .books
-      .target_month(@target_term.year, @target_term.month)
-      .page(params[:page])
-      .order(:books_date, :created_at)
-    @user_books_view = UserBooksViewModel.new(@user, @target_term)
+    @target_month = TargetMonth.new(session)
+    @user_books_summary = UserBooksSummary.new(@user, @target_month)
+    @books = @user.books_list(target_month: @target_month, page: params[:page])
   end
 end

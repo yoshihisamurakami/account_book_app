@@ -20,7 +20,7 @@ $(document).on('turbolinks:load', function() {
     var target = id.replace(/_month/, '');
     $.ajax({
       type: 'GET',
-      url: '/target_terms/' + target
+      url: '/target_months/' + target  //target_months/prev
     }).done(function(json) {
      reloadOnPagination(json);
     }).fail(function(jqXHR, textStatus, errorThrown) {

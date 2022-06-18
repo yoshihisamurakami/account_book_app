@@ -18,4 +18,12 @@ class User < ApplicationRecord
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+
+  # ユーザー別の家計簿一覧
+  def books_list(target_month:, page:)
+    self.books.target_month_and_page(
+      target_month: target_month,
+      page: page
+    )
+  end
 end

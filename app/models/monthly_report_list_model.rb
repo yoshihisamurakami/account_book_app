@@ -3,7 +3,7 @@ class MonthlyReportListModel
 
   def initialize(target_term)
     @message = ''
-    @target_term = target_term
+    @target_month = target_term
     set_budget
     unless @budget
       @message = '対象月の予算が設定されていません。'
@@ -15,14 +15,14 @@ class MonthlyReportListModel
   private
 
   def set_budget
-    @budget = Budget.get_by_target(@target_term)
+    @budget = Budget.get_by_target(@target_month)
   end
 
   def set_monthly_reports
-    lastday = @target_term.lastday_of_month
+    lastday = @target_month.lastday_of_month
     @reports = []
     (1..lastday).each do |day|
-      report = MonthlyReportModel.new(@target_term, @budget, lastday, day)
+      report = MonthlyReportModel.new(@target_month, @budget, lastday, day)
       @reports.push report
       report.set_cost_total(cost_total)
     end
