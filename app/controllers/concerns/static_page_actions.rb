@@ -7,7 +7,7 @@ module StaticPageActions
   end
 
   def set_accounts
-    @accounts = Account.all
+    @accounts = Account.all.order(:id).decorate
   end
 
 end
