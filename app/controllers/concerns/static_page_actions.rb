@@ -1,13 +1,15 @@
 module StaticPageActions
   extend ActiveSupport::Concern
-  include BooksHelper
-  
+
   def set_books_updated_today
-    @books_updated_today = books_updated_today(current_user, params)
+    @books_updated_today = current_user.books
+      .updated_today
+      .order(:books_date, :created_at)
+      .paginate(page: params[:page])
   end
 
   def set_accounts
-    @accounts = Account.all
+    @accounts = Account.all.order(:id).decorate
   end
 
 end

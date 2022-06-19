@@ -52,6 +52,8 @@ gem "actionview"
 
 gem 'pg'
 
+gem 'draper'
+
 # actionpack upgrade (2022-02-05)
 gem "actionpack", ">= 6.0.4.2"
 
