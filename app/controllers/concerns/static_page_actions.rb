@@ -1,7 +1,6 @@
 module StaticPageActions
   extend ActiveSupport::Concern
-  include BooksHelper
-  
+
   def set_books_updated_today
     @books_updated_today = current_user.books
       .updated_today
