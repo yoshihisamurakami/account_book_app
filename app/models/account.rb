@@ -3,6 +3,8 @@ class Account < ApplicationRecord
   validates :comment, length: { maximum: 50 }
   has_many :books
 
+  scope :balances, -> { all.order(:id) }
+
   def balance
     deposit_total - payment_total
   end

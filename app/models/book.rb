@@ -39,6 +39,8 @@ class Book < ApplicationRecord
     .order(:books_date, :created_at)
   }
 
+  scope :updated_today, -> { where('updated_at > ?', Time.now - 1.days) }
+
   def set_default
     self.books_date ||= Time.zone.now
     self.deposit ||= false
