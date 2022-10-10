@@ -36,6 +36,11 @@ class ReportsController < ApplicationController
     end
   end
 
+  def deposit
+    @target_month = TargetMonth.new(session)
+    @books = report_base_books.deposits.without_transfer
+  end
+
   def tax
     @target_month = TargetMonth.new(session)
     @books = report_base_books.where(category_id: Category.tax)
