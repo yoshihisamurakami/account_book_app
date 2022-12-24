@@ -36,7 +36,6 @@ gem 'jbuilder'
 
 #gem 'haml-rails', '~> 2.0.0'
 gem 'haml-rails'
-gem 'bootstrap-sass'
 gem 'rails-controller-testing'
 gem 'bcrypt'
 gem 'jquery-rails'
@@ -62,6 +61,8 @@ gem 'psych', '~> 3.1'
 gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+
+gem 'bootstrap', '~> 4.1.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
