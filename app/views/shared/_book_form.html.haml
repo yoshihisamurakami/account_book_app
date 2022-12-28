@@ -2,7 +2,7 @@
 = form_for(@book) do |f|
   = render 'shared/error_messages', object: f.object
   .col-md-12
-  %table.table.table-bordered.table-condensed
+  %table.table.table-bordered.table-sm
     %tr
       %td.books_label.col-md-1 日付:
       %td.col-md-3= f.date_field :books_date, class: "books_input books_date"

@@ -11,8 +11,11 @@ html {
 }
 
 body {
-  padding-top: 63px;
   height: 100%;
+  font-size: 0.9em;
+}
+.header-border {
+  border-bottom: 1px solid #ccc;
 }
 
 /* header */
@@ -20,7 +23,7 @@ body {
 #logo {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 23px;
   color: #222;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -30,16 +33,6 @@ body {
 #logo:hover {
   color: #444;
   text-decoration: none;
-}
-
-.navbar-gray {
-  background-color: #f4f4f4;
-  border-color: #ddf;
-}
-.navbar-gray .navbar-nav > li > a:hover,
-.navbar-gray .navbar-nav > li > a:focus {
-  color: #448;
-  background-color: transparent;
 }
 
 .title {
@@ -52,6 +45,11 @@ body {
 .small-title {
   font-size: 1.1em;
 }
+
+.main {
+  margin-top: 2em;
+}
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -273,4 +271,18 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .budget-mark {
   color: blue;
+}
+
+.table th {
+  border-top: none;
+}
+
+/* bootstrap3から引き継ぎ */
+.btn-primary {
+  color: #fff;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  &:hover {
+    background-color: #2e6da4;
+  }
 }

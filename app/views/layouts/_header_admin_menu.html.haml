@@ -1,12 +1,12 @@
 %li.dropdown
-  %a{ href: "#", class: "dropdown-toggle", 'data-toggle' => "dropdown" }
+  %a{ href: "#", class: "dropdown-toggle nav-link", 'data-toggle' => "dropdown" }
     管理者用
     %b.caret
   
   %ul.dropdown-menu
     %li
-      = link_to "ユーザー一覧", users_path
+      = link_to "ユーザー一覧", users_path, class: 'dropdown-item'
     %li
-      = link_to "口座一覧", accounts_path
+      = link_to "口座一覧", accounts_path, class: 'dropdown-item'
     %li
-      = link_to "カテゴリ一覧", categories_path
+      = link_to "カテゴリ一覧", categories_path, class: 'dropdown-item'
