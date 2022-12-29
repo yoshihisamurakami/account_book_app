@@ -89,9 +89,9 @@ input {
   margin-bottom: 1em;
 }
 .books_label {
-  background-color: #0088ff;
-  color: white;
-  text-align: center;
+  background-color: #0088ff !important;
+  color: white !important;
+  text-align: center !important;
 }
 .width_auto {
   width: auto;
@@ -276,6 +276,15 @@ input[type="number"]::-webkit-inner-spin-button {
 .table th {
   border-top: none;
 }
+.table-primary {
+  border-bottom: 1px solid #ccc !important;
+}
+a {
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
 
 /* bootstrap3から引き継ぎ */
 .btn-primary {
@@ -285,4 +294,7 @@ input[type="number"]::-webkit-inner-spin-button {
   &:hover {
     background-color: #2e6da4;
   }
+}
+.container {
+  max-width: 1170px;
 }

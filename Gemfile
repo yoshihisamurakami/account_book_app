@@ -62,7 +62,8 @@ gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
 
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 5.2.0'
+gem 'popper_js'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
