@@ -41,3 +41,11 @@ ja:
         fixed_budget: 固定費の予算
         created_at: 登録日時
         updated_at: 更新日時
+
+  views:
+    pagination:
+      first: "&lt;&lt;"
+      last: "&gt;&gt;"
+      previous: "&lt;"
+      next: "&gt;"
+      truncate: "..."

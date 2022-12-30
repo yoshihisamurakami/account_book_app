@@ -295,3 +295,7 @@ a {
 .container {
   max-width: 1170px;
 }
+.navbar {
+  --bs-navbar-padding-y: 0;
+  --bs-navbar-nav-link-padding-x: 0.75rem;
+}

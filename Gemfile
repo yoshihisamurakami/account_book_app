@@ -44,8 +44,6 @@ gem 'rails-i18n'
 gem "loofah"
 gem "rubyzip"
 gem "rack"
-gem "will_paginate"
-gem 'bootstrap-will_paginate'
 gem "nokogiri"
 gem "actionview"
 
@@ -64,6 +62,8 @@ gem 'net-pop', require: false
 
 gem 'bootstrap', '~> 5.2.0'
 gem 'popper_js'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
