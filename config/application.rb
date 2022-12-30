@@ -10,7 +10,7 @@ Bundler.require(*Rails.groups)
 module AccountBookApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
+    config.load_defaults 6.1
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -26,5 +26,7 @@ module AccountBookApp
 
     # timezone設定
     config.time_zone = 'Tokyo'
+
+    config.active_record.legacy_connection_handling = false
   end
 end

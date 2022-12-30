@@ -24,8 +24,8 @@
           %td= book.deposit? ? '入金' : '出金'
           %td= book.category.nil? ? '-' : book.category.name
           %td= book.summary
-          %td.books_number= book.deposit? ? book.amount.to_s(:delimited) : '-'
-          %td.books_number= book.deposit? ? '-' : book.amount.to_s(:delimited)
+          %td.books_number= book.deposit? ? book.amount.to_formatted_s(:delimited) : '-'
+          %td.books_number= book.deposit? ? '-' : book.amount.to_formatted_s(:delimited)
           %td.center= book.common? ? 'o' : '-'
           %td.center= book.business? ? 'o' : '-'
           %td.center= book.special? ? 'o' : '-'
