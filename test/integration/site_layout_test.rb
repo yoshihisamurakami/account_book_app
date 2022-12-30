@@ -15,7 +15,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', users_path, text: 'ユーザー一覧'
     assert_select 'a[href=?]', accounts_path, text: '口座一覧'
     assert_select 'a[href=?]', categories_path, text: 'カテゴリ一覧'
-    assert_select 'a[href=?]', help_path, text: 'ヘルプ'
     assert_select 'a[href=?]', logout_path, text: 'ログアウト'
   end
   
@@ -28,7 +27,6 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', users_path, text: 'ユーザー一覧', count: 0
     assert_select 'a[href=?]', accounts_path, text: '口座一覧', count: 0
     assert_select 'a[href=?]', categories_path, text: 'カテゴリ一覧', count: 0
-    assert_select 'a[href=?]', help_path, text: 'ヘルプ'
     assert_select 'a[href=?]', logout_path, text: 'ログアウト'    
   end
 end
