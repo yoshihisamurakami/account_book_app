@@ -22,6 +22,6 @@ class StaticPagesController < ApplicationController
     current_user.books
       .updated_today
       .order(:books_date, :created_at)
-      .paginate(page: params[:page])
+      .page(params[:page])
   end
 end

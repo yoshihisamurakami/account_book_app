@@ -1,39 +1,37 @@
 %li.dropdown
-  %a{href: "#", class: "dropdown-toggle", 'data-toggle': "dropdown" }
+  %a{href: "#", class: "nav-link dropdown-toggle", 'data-bs-toggle': "dropdown" }
     家計簿
-    %b.caret
 
   %ul.dropdown-menu
-    %li= link_to "一覧", books_path
+    %li= link_to "一覧", books_path, class: 'dropdown-item'
 
     %li.dropdown-submenu
-      %a{ href: "#" , class: "dropdown-toggle", 'data-toggle': "dropdown"}
+      %a{ href: "#" , class: "dropdown-toggle dropdown-item", 'data-bs-toggle': "dropdown"}
         ユーザー別
       %ul.dropdown-menu
         - User.all.each do |user|
-          %li= link_to user.name, user_books_path(user.id)
+          %li= link_to user.name, user_books_path(user.id), class: 'dropdown-item'
     %li.dropdown-submenu
-      %a{ href: "#" , class: "dropdown-toggle", 'data-toggle': "dropdown"}
+      %a{ href: "#" , class: "dropdown-toggle dropdown-item", 'data-bs-toggle': "dropdown"}
         口座別
       %ul.dropdown-menu
         - Account.all.each do |account|
-          %li= link_to account.name, books_account_path(account)
+          %li= link_to account.name, books_account_path(account), class: 'dropdown-item'
     %li.dropdown-submenu
-      %a{ href: "#" , class: "dropdown-toggle", 'data-toggle': "dropdown"}
+      %a{ href: "#" , class: "dropdown-toggle dropdown-item", 'data-bs-toggle': "dropdown"}
         入出金の種類別
       %ul.dropdown-menu
-        %li= link_to "入金一覧", report_deposit_path
-        %li= link_to "税金一覧", report_tax_path
-        %li= link_to "特別経費一覧", report_special_path 
-        %li= link_to "事業経費一覧", report_business_path
-    %li= link_to "カテゴリ別まとめ", report_categories_path
-    %li= link_to "入出金別まとめ", report_deposit_payment_path
-    %li= link_to "年間TSV", books_tsv_path
+        %li= link_to "入金一覧", report_deposit_path, class: 'dropdown-item'
+        %li= link_to "税金一覧", report_tax_path, class: 'dropdown-item'
+        %li= link_to "特別経費一覧", report_special_path, class: 'dropdown-item'
+        %li= link_to "事業経費一覧", report_business_path, class: 'dropdown-item'
+    %li= link_to "カテゴリ別まとめ", report_categories_path, class: 'dropdown-item'
+    %li= link_to "入出金別まとめ", report_deposit_payment_path, class: 'dropdown-item'
+    %li= link_to "年間TSV", books_tsv_path, class: 'dropdown-item'
 
 %li.dropdown
-  %a{href: "#", class: "dropdown-toggle", 'data-toggle': "dropdown" }
+  %a{href: "#", class: "dropdown-toggle nav-link", 'data-bs-toggle': "dropdown" }
     予算
-    %b.caret
   %ul.dropdown-menu
-    %li= link_to "一覧", budgets_path
-    %li= link_to "生活費と残高", monthly_report_path
+    %li= link_to "一覧", budgets_path, class: 'dropdown-item'
+    %li= link_to "生活費と残高", monthly_report_path, class: 'dropdown-item'

@@ -1,7 +1,9 @@
 - provide(:title, "ログイン")
 
 .row
-  .col-md-6.col-md-offset-3
+  .col-md-3
+    &nbsp;
+  .col-md-6
     = form_for(:session, url: login_path) do |f|
       = f.label "メールアドレス"
       = f.email_field :email, class: 'form-control margin_bottom'

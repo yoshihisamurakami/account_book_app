@@ -21,11 +21,11 @@ gem 'uglifier'
 # gem 'therubyracer', platforms: :ruby
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails'
+# gem 'coffee-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder'
+# gem 'jbuilder'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -36,7 +36,6 @@ gem 'jbuilder'
 
 #gem 'haml-rails', '~> 2.0.0'
 gem 'haml-rails'
-gem 'bootstrap-sass'
 gem 'rails-controller-testing'
 gem 'bcrypt'
 gem 'jquery-rails'
@@ -45,8 +44,6 @@ gem 'rails-i18n'
 gem "loofah"
 gem "rubyzip"
 gem "rack"
-gem "will_paginate"
-gem 'bootstrap-will_paginate'
 gem "nokogiri"
 gem "actionview"
 
@@ -62,6 +59,11 @@ gem 'psych', '~> 3.1'
 gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+
+gem 'bootstrap', '~> 5.2.0'
+gem 'popper_js'
+gem 'kaminari'
+gem 'bootstrap5-kaminari-views'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

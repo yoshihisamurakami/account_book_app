@@ -1,19 +1,14 @@
-%header.navbar.navbar-fixed-top.navbar-inverse.navbar-gray
+%header.navbar.navbar-expand-md.navbar-light.bg-light.header-border
   .container
-    = link_to "account book", root_path, id: "logo"
-    %nav
-      %ul.nav.navbar-nav.navbar-right.navbar-collapse.collapse
-        %li
-          = link_to "Home", root_path
+    = link_to "account book", root_path, id: 'logo', class: 'navbar-brand'
+    %ul.navbar-nav.flex-row.ml-md-auto.d-none.d-md-flex
+      %li.nav-item
+        = link_to "Home", root_path, class: 'nav-link'
+      - if user_session.logged_in?
+        - if user_session.current_user.admin?
+          = render 'layouts/header_admin_menu'
+        = render 'layouts/header_login_menu'
+      %li
         - if user_session.logged_in?
-          - if user_session.current_user.admin?
-            = render 'layouts/header_admin_menu'
-          = render 'layouts/header_login_menu'
+          = link_to "ログアウト", logout_path, method: :delete, class: 'nav-link'
 
-        %li
-          = link_to "ヘルプ", help_path
-        %li
-          - if user_session.logged_in?
-            = link_to "ログアウト", logout_path, method: :delete
-          - else
-            = link_to "ログイン",   login_path

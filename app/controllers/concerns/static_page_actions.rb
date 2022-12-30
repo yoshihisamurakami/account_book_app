@@ -5,7 +5,7 @@ module StaticPageActions
     @books_updated_today = current_user.books
       .updated_today
       .order(:books_date, :created_at)
-      .paginate(page: params[:page])
+      .page(params[:page])
   end
 
   def set_accounts
