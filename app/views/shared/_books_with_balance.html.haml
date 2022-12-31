@@ -21,12 +21,12 @@
           %td= '入金'
           %td= '-'
           %td= '繰り越し'
-          %td.books_number= @carryover.to_s(:delimited)
+          %td.books_number= @carryover.to_formatted_s(:delimited)
           %td= '-'
           %td.center= '-'
           %td.center= '-'
           %td.center= '-'
-          %td.books_number= @carryover.to_s(:delimited)
+          %td.books_number= @carryover.to_formatted_s(:delimited)
       - books.each do |book|
         %tr
           %td= book.books_date
@@ -34,9 +34,9 @@
           %td= book.deposit? ? '入金' : '出金'
           %td= book.category.nil? ? '-' : book.category.name
           %td= book.summary
-          %td.books_number= book.deposit? ? book.amount.to_s(:delimited) : '-'
-          %td.books_number= book.deposit? ? '-' : book.amount.to_s(:delimited)
+          %td.books_number= book.deposit? ? book.amount.to_formatted_s(:delimited) : '-'
+          %td.books_number= book.deposit? ? '-' : book.amount.to_formatted_s(:delimited)
           %td.center= book.common? ? 'o' : '-'
           %td.center= book.business? ? 'o' : '-'
           %td.center= book.special? ? 'o' : '-'
-          %td.books_number= get_balance(book).to_s(:delimited)
+          %td.books_number= get_balance(book).to_formatted_s(:delimited)

@@ -6,7 +6,6 @@ first_deposit:
   account: yoshihisa_wallet
   deposit: true
   transfer: false
-  category: nil
   summary: 財布へ入金
   amount: 20000
   common: false

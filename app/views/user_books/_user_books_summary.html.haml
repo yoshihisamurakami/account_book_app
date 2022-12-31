@@ -2,7 +2,7 @@
   - books.each do |category, amount|
     %tr
       %td= category.name
-      %td.right= amount.to_s(:delimited)
+      %td.right= amount.to_formatted_s(:delimited)
   %tr
     %td= "合計"
-    %td.right= books.values.inject(:+).to_s(:delimited)
+    %td.right= books.values.inject(:+).to_formatted_s(:delimited)

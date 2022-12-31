@@ -8,28 +8,28 @@
   %tr
     %td= "入金"
     - @report.each do |month|
-      %td.right= month[:deposit].to_s(:delimited)
+      %td.right= month[:deposit].to_formatted_s(:delimited)
   %tr
     %td= "税金"
     - @report.each do |month|
-      %td.right= month[:tax].to_s(:delimited)
+      %td.right= month[:tax].to_formatted_s(:delimited)
   %tr
     %td= "特別経費"
     - @report.each do |month|
-      %td.right= month[:special].to_s(:delimited)
+      %td.right= month[:special].to_formatted_s(:delimited)
   %tr
     %td= "固定費"
     - @report.each do |month|
-      %td.right= month[:fixed].to_s(:delimited)
+      %td.right= month[:fixed].to_formatted_s(:delimited)
   %tr
     %td= "変動費"
     - @report.each do |month|
-      %td.right= month[:variable].to_s(:delimited)
+      %td.right= month[:variable].to_formatted_s(:delimited)
   %tr
     %td= "生活費(固定費+変動費)"
     - @report.each do |month|
-      %td.right= month[:living].to_s(:delimited)
+      %td.right= month[:living].to_formatted_s(:delimited)
   %tr
     %td= "入金 - 出金"
     - @report.each do |month|
-      %td.right= month[:diff].to_s(:delimited)
+      %td.right= month[:diff].to_formatted_s(:delimited)
