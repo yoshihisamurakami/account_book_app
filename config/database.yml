@@ -33,6 +33,11 @@ test:
   host: 127.0.0.1
   port: 5432
 
+ci_test:
+  <<: *default
+  # database: db/test.sqlite3
+  database: account_book_app_test
+
 production:
   <<: *default
   # database: db/production.sqlite3
