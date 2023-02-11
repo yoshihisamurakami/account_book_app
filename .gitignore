@@ -24,3 +24,5 @@
 
 /test/reports/*
 TODO.md
+.env
+/db/data/*

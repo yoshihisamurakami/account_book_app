@@ -1,0 +1,13 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:14.6
+    container_name: account_book_app_db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${DEVELOPMENT_DATABASE_USERNAME}
+      - POSTGRES_PASSWORD=${DEVELOPMENT_DATABASE_PASSWORD}
+    volumes:
+      - ./db/data:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d

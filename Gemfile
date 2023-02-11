@@ -72,6 +72,7 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'minitest-ci'
+  gem 'dotenv-rails'
 end
 
 group :development do
