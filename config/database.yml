@@ -16,6 +16,10 @@ development:
   <<: *default
   # database: db/development.sqlite3
   database: account_book_app_development
+  username: <%= ENV['DEVELOPMENT_DATABASE_USERNAME'] %>
+  password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] %>
+  host: 127.0.0.1
+  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,6 +28,10 @@ test:
   <<: *default
   # database: db/test.sqlite3
   database: account_book_app_test
+  username: <%= ENV['TEST_DATABASE_USERNAME'] || 'root' %>
+  password: <%= ENV['TEST_DATABASE_PASSWORD'] || 'pass' %>
+  host: 127.0.0.1
+  port: 5432
 
 production:
   <<: *default
