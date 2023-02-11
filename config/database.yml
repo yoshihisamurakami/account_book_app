@@ -27,16 +27,11 @@ development:
 test:
   <<: *default
   # database: db/test.sqlite3
-  database: account_book_app_test
-  username: <%= ENV['TEST_DATABASE_USERNAME'] || 'root' %>
-  password: <%= ENV['TEST_DATABASE_PASSWORD'] || 'pass' %>
-  host: 127.0.0.1
-  port: 5432
-
-ci_test:
-  <<: *default
-  # database: db/test.sqlite3
-  database: account_book_app_test
+  # database: account_book_app_test
+  # username: <%= ENV['TEST_DATABASE_USERNAME'] || 'root' %>
+  # password: <%= ENV['TEST_DATABASE_PASSWORD'] || 'pass' %>
+  # host: 127.0.0.1
+  # port: 5432
 
 production:
   <<: *default

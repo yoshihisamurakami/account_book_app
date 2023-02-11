@@ -33,7 +33,7 @@ jobs:
       PGUSER: circleci
       PGPASSWORD: ""
       TZ: "/usr/share/zoneinfo/Asia/Tokyo"
-      RAILS_ENV: ci_test
+      RAILS_ENV: test
 
     steps:
       - checkout
