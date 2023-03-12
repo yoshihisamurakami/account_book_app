@@ -8,8 +8,10 @@ class BooksController < ApplicationController
     @target_month = TargetMonth.new(session)
     @books = Book
       .eager_load(:user, :account, :category)
+      .where(business: true)
       .target_month(@target_month.year, @target_month.month)
       .page(params[:page])
+      # .order(:category_id, :books_date, :created_at)
       .order(:books_date, :created_at) # オリジナル
       # .order(:books_date, :summary, :created_at)  # 確定申告向け
   end
