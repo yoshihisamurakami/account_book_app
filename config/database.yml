@@ -18,7 +18,7 @@ development:
   database: account_book_app_development
   username: <%= ENV['DEVELOPMENT_DATABASE_USERNAME'] %>
   password: <%= ENV['DEVELOPMENT_DATABASE_PASSWORD'] %>
-  host: 127.0.0.1
+  host: postgres
   port: 5432
 
 # Warning: The database defined as "test" will be erased and
