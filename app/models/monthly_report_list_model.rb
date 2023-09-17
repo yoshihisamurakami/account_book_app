@@ -5,10 +5,10 @@ class MonthlyReportListModel
     @message = ''
     @target_month = target_term
     set_budget
-    unless @budget
-      @message = '対象月の予算が設定されていません。'
-    else
+    if @budget
       set_monthly_reports
+    else
+      @message = '対象月の予算が設定されていません。'
     end
   end
 
