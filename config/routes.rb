@@ -26,4 +26,8 @@ Rails.application.routes.draw do
   get '/reports/business', to: 'reports#business', as: :report_business
   get '/monthly_report',     to: 'monthly_reports#index'
   get '/books/tsv', to: 'books#tsv'
+
+  namespace :report do
+    resources :business_categories, only: [:index]
+  end
 end
