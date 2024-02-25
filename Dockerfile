@@ -1,5 +1,5 @@
 # ベースとなるイメージを指定
-FROM ruby:3.1.3
+FROM ruby:3.1.4
 
 # 必要なパッケージをインストール
 RUN apt-get update -qq && apt-get install -y \
