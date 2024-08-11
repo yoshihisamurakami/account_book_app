@@ -26,7 +26,5 @@ module AccountBookApp
 
     # timezone設定
     config.time_zone = 'Tokyo'
-
-    config.active_record.legacy_connection_handling = false
   end
 end
