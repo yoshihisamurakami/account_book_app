@@ -11,7 +11,7 @@ ruby '3.1.4'
 gem 'rails', '7.2.0'
 
 # Use Puma as the app server
-gem 'puma', ">= 5.6.2"
+gem 'puma', ">= 6.0.0"
 
 # Use SCSSC for stylesheets
 gem 'sassc-rails'
