@@ -15,7 +15,8 @@ class MonthlyCategoriesReport
   def report
     ret = []
     report_target_terms.each do |term|
-      monthly_summary = get_monthly_summary(term)
+      # monthly_summary = get_monthly_summary(term)
+      monthly_summary = get_business_monthly_summary(term)
       monthly_summary.each do |category_id, amount|
         ret << {
           year: term[:year],
@@ -38,6 +39,16 @@ class MonthlyCategoriesReport
   def get_monthly_summary(term)
     Book
       .target_month(term[:year], term[:month])
+      .payments
+      .without_transfer
+      .group(:category_id)
+      .sum(:amount)
+  end
+
+  def get_business_monthly_summary(term)
+    Book
+      .target_month(term[:year], term[:month])
+      .where(business: true)
       .payments
       .without_transfer
       .group(:category_id)

@@ -2,6 +2,15 @@ class ReportsController < ApplicationController
   before_action :require_logged_in
   include ReportsHelper
 
+  # 通常盤
+  # def categories
+  #   report = MonthlyCategoriesReport.new
+  #   @categories = report.categories
+  #   @report_target_terms = report.report_target_terms
+  #   @report = report.report
+  # end
+
+  # 確定申告向け
   def categories
     report = MonthlyCategoriesReport.new
     @categories = report.categories
