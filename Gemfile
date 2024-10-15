@@ -8,7 +8,7 @@ end
 ruby '3.1.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '7.2.0'
+gem 'rails', '7.2.1.1'
 
 # Use Puma as the app server
 gem 'puma', ">= 6.0.0"
