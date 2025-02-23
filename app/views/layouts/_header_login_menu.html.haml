@@ -28,6 +28,7 @@
     %li= link_to "カテゴリ別まとめ", report_categories_path, class: 'dropdown-item'
     %li= link_to "入出金別まとめ", report_deposit_payment_path, class: 'dropdown-item'
     %li= link_to "年間TSV", books_tsv_path, class: 'dropdown-item'
+    %li= link_to "年間事業経費カテゴリ別まとめ", business_reposts_categories_path, class: 'dropdown-item' if Util.settings[:tax_return_mode]
 
 %li.dropdown
   %a{href: "#", class: "dropdown-toggle nav-link", 'data-bs-toggle': "dropdown" }

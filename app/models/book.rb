@@ -22,6 +22,7 @@ class Book < ApplicationRecord
   scope :privates, -> { where(common: false) }
   scope :commons, -> { where(common: true) }
   scope :specials, -> { where(special: true) }
+  scope :business, -> { where(business: true) }
 
   scope :target_year, ->(year) {
     where("books_date >= ?", Date.new(year, 1, 1))
