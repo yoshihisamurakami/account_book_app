@@ -26,5 +26,8 @@ module AccountBookApp
 
     # timezone設定
     config.time_zone = 'Tokyo'
+
+    # config/settings.ymlを読み込む
+    config.settings = config_for(:settings)
   end
 end
