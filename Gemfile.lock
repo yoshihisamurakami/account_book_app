@@ -198,7 +198,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    pg (1.4.3)
+    pg (1.6.3)
     popper_js (2.11.6)
     psych (3.3.4)
     public_suffix (4.0.7)
@@ -377,7 +377,7 @@ DEPENDENCIES
   net-pop
   net-smtp
   nokogiri
-  pg
+  pg (~> 1.6)
   popper_js
   psych (~> 3.1)
   puma (>= 6.0.0)

@@ -47,7 +47,7 @@ gem "rack"
 gem "nokogiri"
 gem "actionview"
 
-gem 'pg'
+gem 'pg', "~> 1.6"
 
 gem 'draper'
 
